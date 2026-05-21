@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanchi Ahuja | Marketing Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F2F4F8;
+    --bg-card: #FFFFFF;
+    --accent: #1E3A5F;
+    --accent-soft: #E3EAF3;
+    --accent-warm: #E89B6C;
+    --text: #14233A;
+    --text-soft: #5A6B82;
+    --border: rgba(20, 35, 58, 0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .display {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  /* NAVIGATION */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(242, 244, 248, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--text);
+    cursor: pointer;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-links a.active { color: var(--accent); }
+
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text);
+  }
+
+  /* PAGES */
+  .page { display: none; min-height: 80vh; }
+  .page.active { display: block; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .container-narrow {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* HOME - HERO */
+  .hero {
+    padding: 5rem 0 4rem;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 .underline {
+    background: linear-gradient(transparent 65%, var(--accent-warm) 65%, var(--accent-warm) 95%, transparent 95%);
+    padding: 0 0.2em;
+  }
+
+  .hero-tagline {
+    font-size: 1.2rem;
+    color: var(--text-soft);
+    margin-bottom: 2rem;
+    max-width: 480px;
+    line-height: 1.5;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--accent);
+    color: white;
+    padding: 0.9rem 1.8rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: transform 0.2s, background 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .hero-cta:hover {
+    transform: translateY(-2px);
+    background: #142A47;
+  }
+
+  .hero-image {
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    position: relative;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    pointer-events: none;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 5rem 0;
+  }
+
+  .section-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 3rem;
+    max-width: 700px;
+  }
+
+  /* FEATURED WORK */
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .work-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .work-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(26, 40, 32, 0.08);
+  }
+
+  .work-card-image {
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .work-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .work-card-content {
+    padding: 1.5rem 1.8rem 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .work-card-tag {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+  }
+
+  .work-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+  }
+
+  .work-card p {
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+    flex: 1;
+  }
+
+  .work-card-link {
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* ABOUT STRIP */
+  .about-strip {
+    background: var(--bg-card);
+    border-radius: 24px;
+    padding: 4rem;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    border: 1px solid var(--border);
+  }
+
+  .about-strip h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    line-height: 1.15;
+  }
+
+  .about-strip p {
+    color: var(--text-soft);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .text-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+    cursor: pointer;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--accent);
+    color: white;
+    padding: 5rem 0;
+    border-radius: 32px;
+    margin-top: 2rem;
+  }
+
+  .testimonials .section-label {
+    color: var(--accent-warm);
+  }
+
+  .testimonials .section-title {
+    color: white;
+    margin-bottom: 3rem;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .testimonial {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .testimonial-quote {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .testimonial-author {
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .testimonial-role {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0.2rem;
+  }
+
+  /* FOOTER CTA */
+  .footer-cta {
+    text-align: center;
+    padding: 6rem 0;
+  }
+
+  .footer-cta h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    line-height: 1.05;
+  }
+
+  .footer-cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--text);
+    padding: 0.9rem 1.8rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border: 1.5px solid var(--text);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  /* ABOUT PAGE */
+  .about-hero {
+    padding: 5rem 0 3rem;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 2rem;
+  }
+
+  .about-hero p {
+    font-size: 1.1rem;
+    color: var(--text-soft);
+    margin-bottom: 1.2rem;
+    line-height: 1.65;
+  }
+
+  .about-img {
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+  }
+
+  .about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .timeline {
+    margin: 4rem 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    align-items: start;
+  }
+
+  .timeline-item:last-child { border-bottom: 1px solid var(--border); }
+
+  .timeline-date {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .timeline-content h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-role {
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-content p {
+    color: var(--text-soft);
+    line-height: 1.6;
+  }
+
+  .interests-section {
+    margin: 4rem 0;
+    padding: 3rem;
+    background: var(--bg-card);
+    border-radius: 24px;
+    border: 1px solid var(--border);
+  }
+
+  .interests-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .interests-section p {
+    color: var(--text-soft);
+    line-height: 1.6;
+    font-size: 1.05rem;
+  }
+
+  /* WORK PAGE */
+  .work-page-hero {
+    padding: 5rem 0 3rem;
+  }
+
+  .work-page-hero h1 {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .work-page-hero p {
+    font-size: 1.2rem;
+    color: var(--text-soft);
+    max-width: 600px;
+  }
+
+  .all-work-grid {
+    padding-bottom: 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  /* CASE STUDY PAGES */
+  .case-hero {
+    padding: 4rem 0 2rem;
+  }
+
+  .case-back {
+    color: var(--text-soft);
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+  }
+
+  .case-back:hover { color: var(--accent); }
+
+  .case-tag {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+  }
+
+  .case-hero h1 {
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+  }
+
+  .case-meta {
+    color: var(--text-soft);
+    font-size: 1rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .case-meta-item strong {
+    color: var(--text);
+    font-weight: 500;
+    margin-right: 0.5rem;
+  }
+
+  .case-hero-image {
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 4rem;
+    aspect-ratio: 16/9;
+  }
+
+  .case-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .case-section {
+    margin-bottom: 4rem;
+  }
+
+  .case-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+  }
+
+  .case-section p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  .case-section p:last-child { margin-bottom: 0; }
+
+  .case-image-block {
+    margin: 3rem 0;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .case-image-block img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .case-image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+  }
+
+  .case-image-grid img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+
+  .case-image-grid.preserve img {
+    aspect-ratio: auto;
+    height: auto;
+    object-fit: contain;
+    background: white;
+    padding: 0;
+  }
+
+  .video-embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 3rem 0;
+    background: #000;
+  }
+
+  .video-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .video-link-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin: 3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .video-link-card .text-content { flex: 1; min-width: 200px; }
+
+  .video-link-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  .video-link-card p {
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .video-link-card a {
+    background: var(--accent);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .case-pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .pillar {
+    background: var(--bg-card);
+    padding: 1.8rem;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+  }
+
+  .pillar-number {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    color: var(--accent-warm);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+  }
+
+  .pillar h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .pillar p {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .next-project {
+    background: var(--bg-card);
+    border-radius: 24px;
+    padding: 3rem;
+    margin: 4rem 0 5rem;
+    border: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .next-project:hover { transform: translateY(-4px); }
+
+  .next-project-label {
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .next-project h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  .arrow-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  /* COMING SOON CARD */
+  .coming-soon-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 2rem 1.8rem;
+    border: 1px dashed var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 350px;
+  }
+
+  .coming-soon-card .work-card-tag {
+    background: rgba(232, 168, 124, 0.15);
+    color: #B86F3D;
+  }
+
+  .coming-soon-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+  }
+
+  .coming-soon-card p {
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .coming-soon-label {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    font-style: italic;
+    margin-top: 1.5rem;
+  }
+
+  /* CONTACT PAGE */
+  .contact-page {
+    padding: 6rem 0;
+    text-align: center;
+  }
+
+  .contact-page h1 {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-page > p {
+    font-size: 1.2rem;
+    color: var(--text-soft);
+    max-width: 500px;
+    margin: 0 auto 3rem;
+  }
+
+  .contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .contact-option {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: var(--text);
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .contact-option:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+
+  .contact-option-left { text-align: left; }
+
+  .contact-option-label {
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-option-value {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 0;
+    margin-top: 4rem;
+    text-align: center;
+    color: var(--text-soft);
+    font-size: 0.9rem;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-grid, .about-grid, .about-strip { grid-template-columns: 1fr; gap: 3rem; }
+    .about-strip { padding: 2.5rem; }
+    .timeline-item { grid-template-columns: 1fr; gap: 0.8rem; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      flex-direction: column;
+      padding: 2rem;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-links.open { display: flex; }
+    .mobile-toggle { display: block; }
+    .container, .container-narrow { padding: 0 1.5rem; }
+    .testimonials { border-radius: 20px; padding: 3rem 0; }
+    .interests-section { padding: 2rem; }
+    .next-project { padding: 2rem; }
+    .case-section p { font-size: 1rem; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-inner { padding: 1rem 1.5rem; }
+    .hero { padding: 3rem 0 2rem; }
+    .section { padding: 3.5rem 0; }
+    .about-strip { padding: 2rem; }
+  }
+  /* ============================================ */
+  /* GUINNESS FORECAST CASE STUDY STYLES         */
+  /* ============================================ */
+
+  .get-to-by {
+    background: var(--accent);
+    color: white;
+    border-radius: 24px;
+    padding: 3.5rem 3rem;
+    margin: 1rem 0 4rem;
+  }
+
+  .gtb-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .gtb-row:last-child { border-bottom: none; }
+
+  .gtb-label {
+    font-family: 'JetBrains Mono', monospace, 'Courier New', Courier;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    color: var(--accent-warm);
+    font-weight: 500;
+    min-width: 50px;
+  }
+
+  .gtb-text {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.2rem, 2.6vw, 1.7rem);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: white;
+  }
+
+  .idea-pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0 4rem;
+  }
+
+  .idea-pillar {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.8rem;
+  }
+
+  .idea-label {
+    font-family: 'JetBrains Mono', monospace, 'Courier New', Courier;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .idea-value {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1.2;
+  }
+
+  .coaster-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0 4rem;
+  }
+
+  .coaster-grid img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+
+  .sign-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0 1rem;
+  }
+
+  .sign-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+  }
+
+  .sign-label {
+    font-family: 'JetBrains Mono', monospace, 'Courier New', Courier;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    text-align: center;
+    margin-top: 0.8rem;
+  }
+
+  .ooh-sequence {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin: 2rem 0 4rem;
+  }
+
+  .ooh-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    display: block;
+  }
+
+  .ooh-caption {
+    font-size: 1rem;
+    color: var(--text-soft);
+    margin-top: 1rem;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .ooh-caption strong {
+    color: var(--text);
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace, 'Courier New', Courier;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .tiktok-block {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 4rem;
+  }
+
+  .tiktok-block img {
+    max-width: 340px;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  .design-system {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 1rem 0 3rem;
+  }
+
+  .design-surface {
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--border);
+  }
+
+  .design-surface.dark {
+    background: #0A0A0A;
+    color: #F4EBD0;
+  }
+
+  .design-surface.dark .design-label { color: #E8C547; }
+  .design-surface.dark .design-context { color: rgba(244, 235, 208, 0.7); }
+  .design-surface.dark .design-detail { color: rgba(244, 235, 208, 0.85); }
+
+  .design-surface.light {
+    background: #F4EBD0;
+    color: #0A0A0A;
+  }
+
+  .design-label {
+    font-family: 'JetBrains Mono', monospace, 'Courier New', Courier;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .design-context {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .design-detail {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .palette-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin: 2rem 0 2rem;
+  }
+
+  .palette-title {
+    font-family: 'JetBrains Mono', monospace, 'Courier New', Courier;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .palette-swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .swatch-chip {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 12px;
+    margin-bottom: 0.8rem;
+  }
+
+  .swatch-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .swatch-hex {
+    font-family: 'JetBrains Mono', monospace, 'Courier New', Courier;
+    font-size: 0.8rem;
+    color: var(--text-soft);
+  }
+
+  .typography-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    margin: 0 0 4rem;
+  }
+
+  .type-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+  }
+
+  .type-row:last-child { border-bottom: none; }
+
+  .type-label {
+    font-family: 'JetBrains Mono', monospace, 'Courier New', Courier;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--text-soft);
+    text-transform: uppercase;
+  }
+
+  .type-value-text {
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0 4rem;
+  }
+
+  .why-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 1.8rem;
+  }
+
+  .why-number {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    color: var(--accent-warm);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    line-height: 1;
+  }
+
+  .why-text {
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .case-closing {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 0;
+    margin: 4rem 0;
+    text-align: center;
+  }
+
+  .case-closing p {
+    color: var(--text-soft);
+    font-style: italic;
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 700px) {
+    .get-to-by { padding: 2.5rem 1.8rem; }
+    .gtb-row { flex-direction: column; gap: 0.3rem; align-items: flex-start; }
+    .coaster-grid, .sign-grid, .design-system { grid-template-columns: 1fr; }
+    .type-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    .palette-block, .typography-block { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo" onclick="showPage('home')">Sanchi Ahuja</div>
+    <button class="mobile-toggle" onclick="toggleMenu()">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a onclick="showPage('home')" data-page="home">Home</a></li>
+      <li><a onclick="showPage('about')" data-page="about">About</a></li>
+      <li><a onclick="showPage('work')" data-page="work">Work</a></li>
+      <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HOME PAGE -->
+<div class="page active" id="home">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <h1 class="display">Chasing the <span class="underline">human truth</span> behind every campaign.</h1>
+          <p class="hero-tagline">Marketing student at Trinity College Dublin, with a background that runs from skincare pop-ups in India to social campaigns on the streets of Dublin.</p>
+          <button class="hero-cta" onclick="showPage('work')">See my work →</button>
+        </div>
+        <div class="hero-image">
+          <img src="images/hero.jpeg" alt="Sanchi Ahuja at Trinity Business School">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Featured work</div>
+      <h2 class="section-title display">A few projects that taught me something.</h2>
+      <div class="work-grid">
+
+        <div class="work-card" onclick="showPage('case-guinness')">
+          <div class="work-card-image">
+            <img src="images/guinness-hero-pint.png" alt="Guinness Forecast">
+          </div>
+          <div class="work-card-content">
+            <span class="work-card-tag">Self-initiated</span>
+            <h3>Guinness Forecast</h3>
+            <p>A summer platform built around the rarest thing in Ireland.</p>
+            <span class="work-card-link">Read case study →</span>
+          </div>
+        </div>
+
+        <div class="work-card" onclick="showPage('case-smoking')">
+          <div class="work-card-image" style="background: #14233A;">
+            <img src="images/smoking-lungs.png" alt="Lungs made of cigarette butts collected from Dublin streets">
+          </div>
+          <div class="work-card-content">
+            <span class="work-card-tag">Advocacy</span>
+            <h3>Cleaning Dublin. Your lungs next?</h3>
+            <p>An advocacy campaign that made a known truth impossible to ignore.</p>
+            <span class="work-card-link">Read case study →</span>
+          </div>
+        </div>
+
+        <div class="work-card" onclick="showPage('case-tuborg')">
+          <div class="work-card-image">
+            <img src="images/tuborg-hero.png" alt="Off The Record Nights Tuborg campaign">
+          </div>
+          <div class="work-card-content">
+            <span class="work-card-tag">Brand campaign</span>
+            <h3>Tuborg: Off The Record Nights</h3>
+            <p>A Tuborg campaign giving Gen Z permission to live offline for a night.</p>
+            <span class="work-card-link">Read case study →</span>
+          </div>
+        </div>
+
+        <div class="work-card" onclick="showPage('case-bah33')">
+          <div class="work-card-image">
+            <img src="images/bah33.png" alt="BAH33 content strategy mockups">
+          </div>
+          <div class="work-card-content">
+            <span class="work-card-tag">Content strategy</span>
+            <h3>Building a content engine for BAH33°</h3>
+            <p>A four-pillar content plan for a Brazilian BBQ restaurant in Dublin.</p>
+            <span class="work-card-link">Read case study →</span>
+          </div>
+        </div>
+
+      </div>
+      <div style="text-align: center; margin-top: 3rem;">
+        <span class="text-link" onclick="showPage('work')">See all projects →</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="about-strip">
+        <div>
+          <div class="section-label">A bit about me</div>
+          <h2>The long route into marketing, with a stop at KPMG along the way.</h2>
+          <p>I took my time getting here. Two years at KPMG in risk analysis, a skincare brand internship in India, and now a MSc in Marketing at Trinity. Whether I was tracking client KPIs or building campaign concepts, the same question kept pulling me back: why do people do what they do?</p>
+          <span class="text-link" onclick="showPage('about')">More about me →</span>
+        </div>
+        <div class="about-img">
+          <img src="images/about.jpeg" alt="Sanchi at Trinity College Dublin">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="testimonials">
+        <div class="container">
+          <div class="section-label">Don't just take my word for it</div>
+          <h2 class="section-title display">What people I have worked with say.</h2>
+          <div class="testimonials-grid">
+
+            <div class="testimonial">
+              <p class="testimonial-quote">"A true team player and force multiplier. Sanchi not only delivers exceptional work but also uplifts those around her through collaboration, positivity, and a strong sense of ownership."</p>
+              <div class="testimonial-author">Rahul Khare</div>
+              <div class="testimonial-role">Associate Director, KPMG</div>
+            </div>
+
+            <div class="testimonial">
+              <p class="testimonial-quote">"Sanchi has excellent analytical skills and approaches problems with clarity, logic, and attention to detail. What sets her apart is her ability to grasp new concepts quickly and apply them effectively."</p>
+              <div class="testimonial-author">Akansha Sharma</div>
+              <div class="testimonial-role">Team Lead at KPMG, Sanchi's mentor</div>
+            </div>
+
+            <div class="testimonial">
+              <p class="testimonial-quote">"Sanchi consistently impressed me with her professionalism, quick learning, and positive attitude. She brings clarity and creativity to every task she takes on."</p>
+              <div class="testimonial-author">Disha Kaur Grover</div>
+              <div class="testimonial-role">Team Lead at KPMG</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="footer-cta">
+    <div class="container-narrow">
+      <h2 class="display">Let's work together.</h2>
+      <div class="footer-cta-buttons">
+        <a class="hero-cta" href="mailto:ahujasanchi.work@gmail.com">Send me an email</a>
+        <a class="btn-secondary" href="https://www.linkedin.com/in/sanchiahuja" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT PAGE -->
+<div class="page" id="about">
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <div class="section-label">About</div>
+          <h1 class="display">Who is Sanchi?</h1>
+          <p>I am a Marketing student at Trinity College Dublin, with a background that goes from skincare brand pop-ups in India to social marketing campaigns on the streets of Dublin. I took the long route into marketing, with a stop at KPMG along the way.</p>
+          <p>But whether I was in risk analysis or building campaign concepts, the thing I kept coming back to was the same: why do people do what they do?</p>
+          <p>I am obsessed with understanding the deep human truths: the real reason someone stops scrolling, picks one brand over another, or puts out a cigarette mid-drag. That is the insight I chase in everything I make.</p>
+        </div>
+        <div class="about-img">
+          <img src="images/about.jpeg" alt="Sanchi Ahuja">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-label">My path</div>
+      <h2 class="section-title display">How I got here.</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-date">2022 to 2023</div>
+          <div class="timeline-content">
+            <h3>Innovist</h3>
+            <div class="timeline-role">Marketing Intern · India</div>
+            <p>Wrote influencer ad scripts for YouTube and Instagram. Helped coordinate the brand's first pop-up event, which generated ₹400,000 in sales over two days. Ran competitor and customer research across three product launches and worked on Amazon and website SEO alignment.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2023 to 2025</div>
+          <div class="timeline-content">
+            <h3>KPMG Global Services</h3>
+            <div class="timeline-role">Analyst, Quality and Risk · India</div>
+            <p>Managed KPI analysis across 80+ client profiles every week. Earned the highest internal accreditation for accuracy. Collaborated with UK-based stakeholders, spotted process inefficiencies, and took the initiative to fix them.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025 to present</div>
+          <div class="timeline-content">
+            <h3>Trinity College Dublin</h3>
+            <div class="timeline-role">MSc Marketing</div>
+            <p>Studying marketing, consumer behaviour, and digital communications. Working on live client projects, campaign concepts, and content strategy. Building the skills and the work that take me into a graduate marketing role in Dublin.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="interests-section">
+        <h2>When I am not thinking about marketing</h2>
+        <p>I am at the gym, deep in a playlist nobody asked for, or losing track of time with a paintbrush.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="footer-cta">
+    <div class="container-narrow">
+      <h2 class="display">Want to see what I have built?</h2>
+      <div class="footer-cta-buttons">
+        <button class="hero-cta" onclick="showPage('work')">See my work →</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- WORK PAGE -->
+<div class="page" id="work">
+  <section class="work-page-hero">
+    <div class="container">
+      <div class="section-label">Work</div>
+      <h1 class="display">Projects.</h1>
+      <p>Five case studies. Each one taught me something about how people actually think, feel, and act.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="all-work-grid">
+
+        <div class="work-card" onclick="showPage('case-guinness')">
+          <div class="work-card-image">
+            <img src="images/guinness-hero-pint.png" alt="Guinness Forecast">
+          </div>
+          <div class="work-card-content">
+            <span class="work-card-tag">Self-initiated</span>
+            <h3>Guinness Forecast</h3>
+            <p>Self-initiated strategic platform.</p>
+            <span class="work-card-link">Read case study →</span>
+          </div>
+        </div>
+
+        <div class="work-card" onclick="showPage('case-smoking')">
+          <div class="work-card-image" style="background: #14233A;">
+            <img src="images/smoking-lungs.png" alt="Lungs made of cigarette butts collected from Dublin streets">
+          </div>
+          <div class="work-card-content">
+            <span class="work-card-tag">Advocacy</span>
+            <h3>Cleaning Dublin. Your lungs next?</h3>
+            <p>Group project, Marketing & Society, TCD.</p>
+            <span class="work-card-link">Read case study →</span>
+          </div>
+        </div>
+
+        <div class="work-card" onclick="showPage('case-tuborg')">
+          <div class="work-card-image">
+            <img src="images/tuborg-hero.png" alt="Off The Record Nights">
+          </div>
+          <div class="work-card-content">
+            <span class="work-card-tag">Brand campaign</span>
+            <h3>Tuborg: Off The Record Nights</h3>
+            <p>Group project, Consumer Behaviour, TCD.</p>
+            <span class="work-card-link">Read case study →</span>
+          </div>
+        </div>
+
+        <div class="work-card" onclick="showPage('case-bah33')">
+          <div class="work-card-image">
+            <img src="images/bah33.png" alt="BAH33 content strategy">
+          </div>
+          <div class="work-card-content">
+            <span class="work-card-tag">Content strategy</span>
+            <h3>Building a content engine for BAH33°</h3>
+            <p>Group and individual project, Digital Marketing Communications, TCD.</p>
+            <span class="work-card-link">Read case study →</span>
+          </div>
+        </div>
+
+        <div class="work-card" onclick="showPage('case-staq')">
+          <div class="work-card-image">
+            <img src="images/staq-pillars.png" alt="Staq AI LinkedIn strategy content pillars">
+          </div>
+          <div class="work-card-content">
+            <span class="work-card-tag">Live client</span>
+            <h3>LinkedIn strategy for an AI recruitment startup</h3>
+            <p>Marketing Design Consultancy, TCD.</p>
+            <span class="work-card-link">Read case study →</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="footer-cta">
+    <div class="container-narrow">
+      <h2 class="display">Let's work together.</h2>
+      <div class="footer-cta-buttons">
+        <a class="hero-cta" href="mailto:ahujasanchi.work@gmail.com">Send me an email</a>
+        <a class="btn-secondary" href="https://www.linkedin.com/in/sanchiahuja" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CASE STUDY: SMOKING -->
+<div class="page" id="case-smoking">
+  <section class="case-hero">
+    <div class="container-narrow">
+      <a class="case-back" onclick="showPage('work')">← Back to work</a>
+      <span class="case-tag">Advocacy campaign</span>
+      <h1 class="display">Cleaning Dublin. Your lungs next?</h1>
+      <div class="case-meta">
+        <div class="case-meta-item"><strong>Brief</strong> Marketing & Society, TCD</div>
+        <div class="case-meta-item"><strong>Type</strong> Group project</div>
+        <div class="case-meta-item"><strong>My role</strong> Core creative idea</div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="case-hero-image">
+        <img src="images/smoking-lungs.png" alt="Lung-shaped box filled with cigarette butts collected from Dublin streets">
+      </div>
+    </div>
+  </section>
+
+  <div class="container-narrow">
+
+    <div class="case-section">
+      <h2>The setup</h2>
+      <p>A group project for the Marketing and Society module at Trinity. The brief was to design an advocacy video on smoking, aimed at EU policymakers, to push for stronger action on tobacco harm.</p>
+    </div>
+
+    <div class="case-section">
+      <h2>The insight</h2>
+      <p>People know smoking is harmful. The statistics, the warnings on packs, the public health ads, none of it lands the way you would expect. But seeing hundreds of cigarette butts collected together in one place made it impossible to look away. That is the difference between knowing something and feeling it. The campaign was built around that gap.</p>
+    </div>
+
+    <div class="case-section">
+      <h2>The work</h2>
+      <p>I developed the core creative idea: building lung-shaped boxes and filling them with cigarette butts collected from the streets around Dublin. The visual was designed to be confronting in a way that data alone never is.</p>
+      <p>From there, the group turned the concept into a street activation and an advocacy video for EU policymakers. We collected the waste, built the boxes, and took the campaign onto Trinity's campus and across the city.</p>
+    </div>
+
+    <div class="case-image-grid">
+      <img src="images/smoking-collecting.png" alt="Collecting cigarette waste from Dublin streets">
+      <img src="images/smoking-boxes.png" alt="Building the lung-shaped boxes">
+      <img src="images/smoking-protest.png" alt="Taking the campaign onto Trinity's campus">
+    </div>
+
+    <div class="video-link-card">
+      <div class="text-content">
+        <h4>Watch the campaign video</h4>
+        <p>Published on Healthy Trinity's YouTube channel.</p>
+      </div>
+      <a href="https://youtu.be/-1Nm9v2N5gM?si=r5AVouSyxSvu7_gr" target="_blank">Watch on YouTube →</a>
+    </div>
+
+    <div class="case-section">
+      <h2>What I took from it</h2>
+      <p>Insight is only as strong as how you make people feel it. A statistic about smoking deaths can be ignored. A pair of lungs made of butts cannot. This project shaped how I think about campaign creative now: start with what the audience already knows, then find a way to make them feel it for the first time.</p>
+    </div>
+
+    <div class="next-project" onclick="showPage('case-tuborg')">
+      <div>
+        <div class="next-project-label">Next project</div>
+        <h3 class="display">Tuborg: Off The Record Nights</h3>
+      </div>
+      <div class="arrow-circle">→</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CASE STUDY: TUBORG -->
+<div class="page" id="case-tuborg">
+  <section class="case-hero">
+    <div class="container-narrow">
+      <a class="case-back" onclick="showPage('work')">← Back to work</a>
+      <span class="case-tag">Brand campaign</span>
+      <h1 class="display">Tuborg: Off The Record Nights</h1>
+      <div class="case-meta">
+        <div class="case-meta-item"><strong>Brief</strong> Consumer Behaviour, TCD</div>
+        <div class="case-meta-item"><strong>Type</strong> Group project</div>
+        <div class="case-meta-item"><strong>My role</strong> Created the full video</div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="case-hero-image">
+        <img src="images/tuborg-hero.png" alt="Off The Record Nights Tuborg campaign hero">
+      </div>
+    </div>
+  </section>
+
+  <div class="container-narrow">
+
+    <div class="case-section">
+      <h2>The setup</h2>
+      <p>A group project for the Consumer Behaviour module. The brief was to design a brand experience for Tuborg that connected with Gen Z on something they actually cared about.</p>
+    </div>
+
+    <div class="case-section">
+      <h2>The insight</h2>
+      <p>Gen Z carries the constant weight of being watched. Phones out, stories up, every night documented. The result is that they are rarely present in the moment they are supposedly enjoying. Our group identified this as the tension worth solving: Tuborg could position itself as the brand that gives young people permission to put the phone down.</p>
+    </div>
+
+    <div class="case-section">
+      <h2>The work</h2>
+      <p>The group developed the strategic insight together. I took it from concept to execution by creating the full two minute video campaign myself, end to end. The concept was Off The Record Nights: nights that do not need to be posted to be real.</p>
+    </div>
+
+    <div class="video-link-card">
+      <div class="text-content">
+        <h4>Watch the full video</h4>
+        <p>Posted on LinkedIn.</p>
+      </div>
+      <a href="https://www.linkedin.com/posts/sanchiahuja_consumerbehaviour-groupassignment-trinitybusinessschool-ugcPost-7449591192679309312-M7Ey" target="_blank">Watch on LinkedIn →</a>
+    </div>
+
+    <div class="case-section">
+      <h2>What I took from it</h2>
+      <p>Brand work is most powerful when it gives people permission, not instructions. Telling Gen Z to stop being on their phones would not work. Offering them a night that is theirs alone might. This project taught me how to move from a sharp consumer insight to a piece of creative work that respects the audience instead of lecturing them.</p>
+    </div>
+
+    <div class="next-project" onclick="showPage('case-bah33')">
+      <div>
+        <div class="next-project-label">Next project</div>
+        <h3 class="display">Building a content engine for BAH33°</h3>
+      </div>
+      <div class="arrow-circle">→</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CASE STUDY: BAH33 -->
+<div class="page" id="case-bah33">
+  <section class="case-hero">
+    <div class="container-narrow">
+      <a class="case-back" onclick="showPage('work')">← Back to work</a>
+      <span class="case-tag">Content strategy</span>
+      <h1 class="display">Building a content engine for BAH33°</h1>
+      <div class="case-meta">
+        <div class="case-meta-item"><strong>Brief</strong> Digital Marketing Communications, TCD</div>
+        <div class="case-meta-item"><strong>Client</strong> BAH33°, Dublin</div>
+        <div class="case-meta-item"><strong>Type</strong> Academic project</div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="case-hero-image">
+        <img src="images/bah33.png" alt="BAH33 Instagram and TikTok mockups">
+      </div>
+    </div>
+  </section>
+
+  <div class="container-narrow">
+
+    <div class="case-section">
+      <h2>The setup</h2>
+      <p>Two linked projects for the Digital Marketing Communications module. The group brief was to build a full digital marketing strategy for BAH33°, a Brazilian barbecue restaurant on Dawson Street in Dublin. The individual brief was to expand on a chosen part of that strategy in depth.</p>
+    </div>
+
+    <div class="case-section">
+      <h2>The insight</h2>
+      <p>BAH33° is not just another Dublin restaurant. It is a premium Brazilian steakhouse on Dawson Street, which makes it a natural choice for client lunches, team dinners, and corporate hosting. The opportunity was not to compete with casual diners on Instagram trends. It was to position BAH33° as the reliable choice for the people doing the booking when the stakes matter.</p>
+    </div>
+
+    <div class="case-section">
+      <h2>The work</h2>
+      <p>In the group project, I owned the content marketing strand of the full strategy. I built the approach around four content pillars designed to move target personas from awareness through to trust and booking intent. I also developed the content calendar that mapped this out across platforms.</p>
+      <p>For the individual project, I expanded the content marketing work into a deeper plan: post mockups for Instagram and TikTok generated with AI, refined messaging for each pillar, and platform-specific tactics.</p>
+    </div>
+
+    <div class="case-section">
+      <h2>The four pillars</h2>
+      <div class="case-pillars">
+        <div class="pillar">
+          <div class="pillar-number">01</div>
+          <h4>Confident Hosting</h4>
+          <p>The structured rodízio service, continuous table-side flow, and clear pricing reduce perceived risk for those hosting client lunches.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-number">02</div>
+          <h4>Fire and Culinary Craft</h4>
+          <p>Open-flame grilling, table-side carving, and preparation detail that support premium positioning and reinforce food quality.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-number">03</div>
+          <h4>Gaucho's Selection</h4>
+          <p>A monthly chef-led feature on one premium cut: origin, preparation, and cultural context. Builds confidence in what diners are serving clients.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-number">04</div>
+          <h4>Professional Dining</h4>
+          <p>Content built around business lunch etiquette, timing, and corporate hosting needs.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-section">
+      <h2>Sample post mockups</h2>
+      <p>I used AI-generated visuals to mock up how content from each pillar would land on Instagram and TikTok. This made the strategy concrete rather than abstract, with a visual reference for tone, framing, and format alongside the written plan.</p>
+    </div>
+
+    <div class="case-image-block">
+      <img src="images/bah33.png" alt="Instagram and TikTok content mockups for BAH33">
+    </div>
+
+    <div class="case-section">
+      <h2>What I took from it</h2>
+      <p>Good content strategy starts with who you are actually trying to win, not where you want to post. Building the four pillars around the corporate hosting audience meant every piece of content had a specific job: reduce risk for the booker, justify the price, build culinary credibility, fit the business lunch context. This project taught me to think about content as a tool for confidence, not just attention.</p>
+    </div>
+
+    <div class="next-project" onclick="showPage('case-staq')">
+      <div>
+        <div class="next-project-label">Next project</div>
+        <h3 class="display">LinkedIn strategy for Staq AI</h3>
+      </div>
+      <div class="arrow-circle">→</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CASE STUDY: STAQ AI -->
+<div class="page" id="case-staq">
+  <section class="case-hero">
+    <div class="container-narrow">
+      <a class="case-back" onclick="showPage('work')">← Back to work</a>
+      <span class="case-tag">Live client</span>
+      <h1 class="display">LinkedIn strategy for an AI recruitment startup.</h1>
+      <div class="case-meta">
+        <div class="case-meta-item"><strong>Brief</strong> Marketing Design Consultancy, TCD</div>
+        <div class="case-meta-item"><strong>Client</strong> Staq AI, Dogpatch Labs</div>
+        <div class="case-meta-item"><strong>Type</strong> Live client project</div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="case-hero-image">
+        <img src="images/staq-pillars.png" alt="Staq AI LinkedIn content pillars">
+      </div>
+    </div>
+  </section>
+
+  <div class="container-narrow">
+
+    <div class="case-section">
+      <h2>The setup</h2>
+      <p>A live consultancy project with Staq AI, an AI recruitment startup incubated at Dogpatch Labs in Dublin. Our team was brought in to support the founder on brand and marketing. My focus area was LinkedIn: brand toolkit, organic lead generation strategy, and content.</p>
+    </div>
+
+    <div class="case-section">
+      <h2>The insight</h2>
+      <p>Early stage B2B founders do not buy from polished corporate accounts. They buy from people they trust. For Staq AI, that meant the founder's own LinkedIn presence was a bigger lever than a company page. The strategy had to make her show up as someone worth listening to, not as a product on a page.</p>
+    </div>
+
+    <div class="case-section">
+      <h2>The work</h2>
+      <p>I built the LinkedIn brand toolkit so the founder had a consistent visual and verbal identity to post under. I developed the organic lead generation strategy: who to target, what content would earn their attention, and how to convert engagement into conversations. I also created content for the platform that the founder could publish.</p>
+      <p>To do this well, I completed Hootsuite's Social Media Marketing Professional Certificate during the project, which sharpened my approach to strategy, copywriting, and platform-specific content. I used AI tools to refine the work and make sure the output landed with the right audience in the right tone.</p>
+    </div>
+
+    <div class="case-section">
+      <h2>The four content pillars</h2>
+      <p>I built the LinkedIn content strategy around four pillars, each designed to move HR decision-makers from passive scroll to inbound conversation.</p>
+      <div class="case-pillars">
+        <div class="pillar">
+          <div class="pillar-number">01</div>
+          <h4>The Cost of Manual Screening</h4>
+          <p>Posts that speak to the time and operational pressure of screening at volume.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-number">02</div>
+          <h4>What Better Looks Like</h4>
+          <p>Posts that paint a picture of what the HR team's week looks like when screening is handled. Aspirational rather than problem-focused.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-number">03</div>
+          <h4>Educational Content</h4>
+          <p>Posts that teach the audience something useful about hiring and recruitment without mentioning the product. Industry benchmarks, candidate behaviour trends, and hiring speed data.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-number">04</div>
+          <h4>HR as a Strategic Function</h4>
+          <p>Posts about what HR teams could be doing with their time if operational screening were handled. Culture, retention, employer brand, and candidate relationships.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-section">
+      <h2>Sample posts I wrote</h2>
+      <p>Four LinkedIn posts I drafted for the founder, each anchored to one of the four pillars. Same brand voice, different jobs.</p>
+    </div>
+
+    <div class="case-image-grid preserve">
+      <img src="images/staq-post-300cvs.png" alt="Staq AI LinkedIn post: somewhere in those 300 CVs">
+      <img src="images/staq-post-good-candidates.png" alt="Staq AI LinkedIn post: good candidates do not wait two weeks">
+      <img src="images/staq-post-still-spending.png" alt="Staq AI LinkedIn post: still spending hours on screening calls">
+      <img src="images/staq-post-40hrs.png" alt="Staq AI LinkedIn post: what would your HR team do with 40 hours back">
+    </div>
+
+    <div class="case-section">
+      <h2>The outcome</h2>
+      <p>This was a live client, so the work had to be usable, not theoretical. After the project ended, I saw the founder implementing several of the frameworks I had built, which was the strongest signal that the strategy was practical and worth using.</p>
+    </div>
+
+    <div class="case-section">
+      <h2>What I took from it</h2>
+      <p>Working with a live client at an early stage startup is different from any classroom brief. The founder did not need a perfect deck. They needed something they could pick up on Monday and use. This project taught me to build for adoption, not for marks.</p>
+    </div>
+
+    <div class="next-project" onclick="showPage('case-smoking')">
+      <div>
+        <div class="next-project-label">Back to the start</div>
+        <h3 class="display">Cleaning Dublin. Your lungs next?</h3>
+      </div>
+      <div class="arrow-circle">→</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CASE STUDY: GUINNESS FORECAST -->
+<div class="page" id="case-guinness">
+  <section class="case-hero">
+    <div class="container-narrow">
+      <a class="case-back" onclick="showPage('work')">← Back to work</a>
+      <span class="case-tag">Self-initiated</span>
+      <h1 class="display">Guinness Forecast</h1>
+      <p style="font-size: 1.25rem; color: var(--text-soft); line-height: 1.5; margin-bottom: 2rem; max-width: 750px;">A self-initiated platform exploring how Guinness could own the Irish summer occasion through reactive, weather-led marketing.</p>
+      <div class="case-meta">
+        <div class="case-meta-item"><strong>Type</strong> Self-initiated</div>
+        <div class="case-meta-item"><strong>Year</strong> 2026</div>
+        <div class="case-meta-item"><strong>Role</strong> Strategy and concept</div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="case-hero-image">
+        <img src="images/guinness-hero-pint.png" alt="A pint of Guinness in golden afternoon light">
+      </div>
+      <p style="text-align: center; color: var(--text-soft); font-style: italic; margin-top: 1.5rem; font-size: 0.95rem;">A summer platform built around the rarest thing in Ireland.</p>
+    </div>
+  </section>
+
+  <div class="container-narrow">
+
+    <div class="case-section">
+      <h2>The opportunity</h2>
+      <p>Guinness is having a moment. Global sales up 13 percent in the year ending June 2025. Penetration among women up 86 percent. Penetration among under-34s up 70 percent. Among 18 to 25 year olds, the share who think Guinness is a cool brand has gone from 22 percent to 67 percent in two years.</p>
+      <p>The brand has done the hardest part. It has earned cultural permission with Gen Z and women, the two audiences it had spent a century missing. But the work targeting them still leans heavily on sport, pubs, and winter. The audience has arrived. The occasions have not caught up.</p>
+      <p>There is a clear white space: a summer platform built for the audience already gravitating toward the brand.</p>
+    </div>
+
+    <div class="case-section">
+      <h2>The insight</h2>
+      <p>A sunny day in Ireland is not weather. It is a national event. Beer gardens fill within an hour. Plans cancel. Group chats light up. Phones come out. The country gives itself permission to stop.</p>
+      <p>That is the strategic gold. Most brands chase summer with seasonal campaigns that run for three months whether the sun shows up or not. Guinness has the chance to do the opposite: own the moment, not the season. Show up only when it actually matters.</p>
+      <p>And the connection writes itself. Guinness has built its brand on a single idea for nearly a century. Good things come to those who wait. In Ireland, the sun is one of them.</p>
+    </div>
+
+    <div class="case-image-block">
+      <img src="images/guinness-lifestyle.png" alt="Two women laughing over pints of Guinness in a Dublin beer garden">
+    </div>
+
+    <div class="case-section">
+      <h2>The audience</h2>
+      <p>Young Irish women, 21 to 28. Urban, social, culturally tuned in. They are the audience driving Guinness's recent surge, but their experience of the brand is still mostly winter, mostly pub, mostly male coded. The platform is built for them. Not as a niche segment, but as the lead audience the rest follows.</p>
+    </div>
+
+    <div class="case-section">
+      <h2>Strategy</h2>
+    </div>
+
+    <div class="get-to-by">
+      <div class="gtb-row">
+        <span class="gtb-label">GET</span>
+        <span class="gtb-text">young Irish women</span>
+      </div>
+      <div class="gtb-row">
+        <span class="gtb-label">TO</span>
+        <span class="gtb-text">make Guinness their first pour of a sunny day</span>
+      </div>
+      <div class="gtb-row">
+        <span class="gtb-label">BY</span>
+        <span class="gtb-text">reminding them that good things come to those who wait, and the Irish sun is one of them.</span>
+      </div>
+    </div>
+
+    <div class="case-section">
+      <h2>The idea</h2>
+      <p>Guinness Forecast is a reactive, weather-led platform that activates only when conditions are right. When Dublin hits 20 degrees and sunshine, a Guinness Day is declared. The platform behaves like a forecast. It predicts. It announces. It records.</p>
+      <p>Each Guinness Day is numbered across the summer, turning a campaign into a logged event. Day 04. Day 07. Day 11. Scarcity does the marketing.</p>
+    </div>
+
+    <div class="idea-pillars">
+      <div class="idea-pillar">
+        <div class="idea-label">Platform</div>
+        <div class="idea-value">Guinness Forecast</div>
+      </div>
+      <div class="idea-pillar">
+        <div class="idea-label">The moment</div>
+        <div class="idea-value">A Guinness Day</div>
+      </div>
+      <div class="idea-pillar">
+        <div class="idea-label">Endline</div>
+        <div class="idea-value">Pour one for the sun.</div>
+      </div>
+    </div>
+
+    <div class="case-section">
+      <h2>The hero act: The Coaster</h2>
+      <p>On every Guinness Day, participating Dublin pubs hand out a limited edition collectible coaster with every Guinness ordered. Each coaster is printed with the date, the temperature, the pub name, the Guinness Day number of the year, and a unique pour number for that pub on that day.</p>
+      <p>These coasters become a record of every good day of Irish summer. People collect them, photograph them, line them up at home, post the keepers. The souvenir is the post.</p>
+    </div>
+
+    <div class="coaster-grid">
+      <img src="images/guinness-coaster-01.png" alt="Guinness Day coaster No. 04, Kehoe's, 14 Jun, 21 degrees, pour 247">
+      <img src="images/guinness-coaster-02.png" alt="Guinness Day coaster No. 07, The Long Hall, 02 Jul, 23 degrees, pour 184">
+      <img src="images/guinness-coaster-03.png" alt="Guinness Day coaster No. 11, Grogan's, 19 Jul, 22 degrees, pour 312">
+      <img src="images/guinness-coaster-04.png" alt="Guinness Day coaster No. 14, The Stag's Head, 09 Aug, 20 degrees, pour 156">
+    </div>
+
+    <div class="case-section">
+      <h2>The hero act: The Sign</h2>
+      <p>Each participating pub flips a hand-painted wooden sign in the window from "Not today" to "A Guinness Day" the moment conditions are confirmed. A small, satisfying, ownable ritual. The two states make the platform tangible. Pubs become a small treasure trail across the city.</p>
+    </div>
+
+    <div class="sign-grid">
+      <div class="sign-item">
+        <img src="images/guinness-sign-no.png" alt="Pub window sign reading Not today, Guinness Forecast">
+        <div class="sign-label">Off days</div>
+      </div>
+      <div class="sign-item">
+        <img src="images/guinness-sign-yes.png" alt="Pub window sign reading A Guinness Day, No. 04 / 2026">
+        <div class="sign-label">A Guinness Day</div>
+      </div>
+    </div>
+
+    <p style="text-align: center; color: var(--text-soft); font-style: italic; margin: 2rem auto 4rem; max-width: 600px; font-size: 1rem;">The platform activates and deactivates based on real conditions. On the days the forecast does not deliver, the campaign does not pretend it has.</p>
+
+    <div class="case-section">
+      <h2>Reactive OOH</h2>
+      <p>Digital boards across Dublin behave like forecast screens. They predict. They announce. They log.</p>
+    </div>
+
+    <div class="ooh-sequence">
+      <div class="ooh-item">
+        <img src="images/guinness-billboard-before.png" alt="Dublin billboard reading A Guinness Day is coming, Wed 17 Jun, 21 degrees">
+        <div class="ooh-caption"><strong>48 hours before</strong>A Guinness Day is predicted across Dublin OOH.</div>
+      </div>
+      <div class="ooh-item">
+        <img src="images/guinness-billboard-during.png" alt="Dublin billboard reading Today is a Guinness Day, Dublin 21 degrees, Pour one for the sun">
+        <div class="ooh-caption"><strong>Day of</strong>Boards flip live the moment Met Éireann confirms conditions.</div>
+      </div>
+      <div class="ooh-item">
+        <img src="images/guinness-billboard-after.png" alt="Dublin billboard reading That was Guinness Day 04, next one predicted Sat 20 Jun">
+        <div class="ooh-caption"><strong>Day after</strong>The campaign logs each Guinness Day and predicts the next.</div>
+      </div>
+    </div>
+
+    <div class="case-section">
+      <h2>Social</h2>
+      <p>TikTok carries the reactive announcement moments. Instagram carries the keepsake and aesthetic layer.</p>
+    </div>
+
+    <div class="tiktok-block">
+      <img src="images/guinness-tiktok.png" alt="TikTok mock showing Guinness Forecast announcing Today is a Guinness Day">
+    </div>
+
+    <div class="case-section">
+      <h2>Met Éireann partnership</h2>
+      <p>Guinness Forecast runs in partnership with Met Éireann, Ireland's national weather service. Met Éireann's data triggers the platform. When their reading hits 20 degrees and sunshine in Dublin, the campaign activates automatically. Boards flip, pubs receive coasters, social announces.</p>
+      <p>The partnership gives the platform credibility. This is not Guinness inventing the moment. It is the national authority confirming it. It also unlocks earned media. Weather presenters could naturally reference "tomorrow looks like a Guinness Day" during forecasts.</p>
+    </div>
+
+    <div class="case-section">
+      <h2>Visual identity and design system</h2>
+      <p>The visual identity is built around a simple rule: dark surfaces carry colour, light surfaces stay monochrome.</p>
+    </div>
+
+    <div class="design-system">
+      <div class="design-surface dark">
+        <div class="design-label">Dark surfaces</div>
+        <div class="design-context">OOH, social</div>
+        <div class="design-detail">Cream serif headlines, sun yellow accent on the key word for OOH, sky blue accent for social. Monospace for all data and labels.</div>
+      </div>
+      <div class="design-surface light">
+        <div class="design-label">Light surfaces</div>
+        <div class="design-context">Coasters, pub signs</div>
+        <div class="design-detail">Pure black typography, no accent. The hierarchy does the work.</div>
+      </div>
+    </div>
+
+    <div class="palette-block">
+      <div class="palette-title">Colour palette</div>
+      <div class="palette-swatches">
+        <div class="swatch"><div class="swatch-chip" style="background: #0A0A0A;"></div><div class="swatch-name">Black</div><div class="swatch-hex">#0A0A0A</div></div>
+        <div class="swatch"><div class="swatch-chip" style="background: #F4EBD0; border: 1px solid var(--border);"></div><div class="swatch-name">Cream</div><div class="swatch-hex">#F4EBD0</div></div>
+        <div class="swatch"><div class="swatch-chip" style="background: #E8C547;"></div><div class="swatch-name">Sun yellow</div><div class="swatch-hex">#E8C547</div></div>
+        <div class="swatch"><div class="swatch-chip" style="background: #A8C8E1;"></div><div class="swatch-name">Sky blue</div><div class="swatch-hex">#A8C8E1</div></div>
+      </div>
+    </div>
+
+    <div class="typography-block">
+      <div class="type-row">
+        <div class="type-label">Serif headlines</div>
+        <div class="type-value" style="font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 600;">Fraunces</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">Monospace data</div>
+        <div class="type-value" style="font-family: 'JetBrains Mono', monospace, 'Courier New', Courier; font-size: 1.3rem;">JetBrains Mono</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">Tone of voice</div>
+        <div class="type-value-text">Dry, confident, Irish. Short sentences. Sounds like something a real person would say.</div>
+      </div>
+    </div>
+
+    <div class="case-section">
+      <h2>Why it works</h2>
+      <p>The platform does not invent a story. It surfaces one that has been sitting under Guinness's nose for a century. Sunny days in Ireland are rare and worth marking. Guinness has always been about rare, slow, worth the wait. Two truths, one idea.</p>
+      <p>It also earns its place commercially:</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-number">01</div>
+        <div class="why-text">Talks to Gen Z women in their language, not in pub coded male defaults</div>
+      </div>
+      <div class="why-item">
+        <div class="why-number">02</div>
+        <div class="why-text">Breaks the winter perception that the brand has named as a strategic priority</div>
+      </div>
+      <div class="why-item">
+        <div class="why-number">03</div>
+        <div class="why-text">Lives reactive and live. The work shows up only when the moment earns it</div>
+      </div>
+      <div class="why-item">
+        <div class="why-number">04</div>
+        <div class="why-text">Builds a platform, not a campaign. Year on year, the numbers compound</div>
+      </div>
+    </div>
+
+    <div class="case-closing">
+      <p>A self-initiated project by Sanchi Ahuja. Not affiliated with Guinness or Diageo.</p>
+    </div>
+
+    <div class="next-project" onclick="showPage('case-smoking')">
+      <div>
+        <div class="next-project-label">Next project</div>
+        <h3 class="display">Cleaning Dublin. Your lungs next?</h3>
+      </div>
+      <div class="arrow-circle">→</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONTACT PAGE -->
+<div class="page" id="contact">
+  <section class="contact-page">
+    <div class="container-narrow">
+      <div class="section-label">Get in touch</div>
+      <h1 class="display">Let's work together.</h1>
+      <p>If you have a role, a project, or just want to chat about marketing in Dublin, I would love to hear from you.</p>
+
+      <div class="contact-options">
+        <a class="contact-option" href="mailto:ahujasanchi.work@gmail.com">
+          <div class="contact-option-left">
+            <div class="contact-option-label">Email</div>
+            <div class="contact-option-value">ahujasanchi.work@gmail.com</div>
+          </div>
+          <div>→</div>
+        </a>
+        <a class="contact-option" href="https://www.linkedin.com/in/sanchiahuja" target="_blank">
+          <div class="contact-option-left">
+            <div class="contact-option-label">LinkedIn</div>
+            <div class="contact-option-value">linkedin.com/in/sanchiahuja</div>
+          </div>
+          <div>→</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Sanchi Ahuja · Built with care in Dublin</p>
+  </div>
+</footer>
+
+<script>
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    const isCase = pageId.startsWith('case-');
+    const navPage = isCase ? 'work' : pageId;
+    const navLink = document.querySelector('.nav-links a[data-page="' + navPage + '"]');
+    if (navLink) navLink.classList.add('active');
+
+    document.getElementById('navLinks').classList.remove('open');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  document.querySelector('.nav-links a[data-page="home"]').classList.add('active');
+</script>
+
+</body>
+</html>
