@@ -340,7 +340,7 @@ window.SITE = {
       "teaser": "Data showed me what people do. To understand why, I moved to Dublin.",
       "stat": "97%",
       "statLabel": "accuracy across 80 client accounts a week",
-      "img": "images/kpmg-01-welcome.jpg",
+      "img": "images/kpmg-01-welcome-zoom.jpg",
       "pos": "center 35%",
       "more": [
         {
@@ -415,7 +415,7 @@ window.SITE = {
       "year": "July 2026",
       "name": "The anniversary",
       "meta": "Marketing in Ireland, Dublin",
-      "title": "Behind the camera at a community's fifth birthday.",
+      "title": "Behind the camera at the Marketing in Ireland community's fifth birthday.",
       "hook": "Marketing in Ireland marked its 5th anniversary with an outdoor celebration in Dublin. I joined the event team and spent the day documenting it.",
       "steps": [
         {
@@ -439,10 +439,6 @@ window.SITE = {
         {
           "img": "images/marketing-in-ireland-06-workshop.jpg",
           "alt": "A workshop on the grass at the Marketing in Ireland 5th anniversary"
-        },
-        {
-          "img": "images/marketing-in-ireland-01-meditation.jpg",
-          "alt": "Guests at the Marketing in Ireland 5th anniversary"
         },
         {
           "img": "images/marketing-in-ireland-05-cake-table.jpg",
