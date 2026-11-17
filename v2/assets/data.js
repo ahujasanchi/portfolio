@@ -308,20 +308,20 @@ window.SITE = {
       "name": "The numbers",
       "meta": "KPMG, India",
       "title": "Two years of learning what the numbers say.",
-      "hook": "At KPMG I analysed KPIs for more than 80 client profiles every week. It was a long way from a pop-up stall, and exactly the training I needed.",
+      "hook": "At KPMG I worked in quality and risk management, handling 80 client accounts a week. It was a long way from a pop-up stall, and exactly the training I needed.",
       "steps": [
         {
           "label": "What I worked on",
-          "text": "Weekly performance reporting, spotting where processes were breaking down, and fixing them with stakeholders in the UK."
+          "text": "Analysing large datasets and turning them into clear reports and recommendations for senior stakeholders, and coordinating with UK-based teams to support project delivery."
         },
         {
           "label": "What it taught me",
-          "text": "Precision. I earned the highest internal accreditation for accuracy, and the habit has stayed with me."
+          "text": "Precision under pressure. I earned the highest internal AML and KYC accreditation and a SPOT Award, and was trusted to mentor and onboard new joiners."
         }
       ],
       "teaser": "Data showed me what people do. To understand why, I moved to Dublin.",
-      "stat": "80+",
-      "statLabel": "client profiles analysed every week",
+      "stat": "97%",
+      "statLabel": "accuracy across 80 client accounts a week",
       "img": "images/kpmg-01-welcome.jpg",
       "pos": "center 35%",
       "more": [
@@ -360,23 +360,23 @@ window.SITE = {
     },
     {
       "year": "June 2026",
-      "name": "The room",
-      "meta": "Industry events, Dublin",
+      "name": "The front desk",
+      "meta": "Ireland India Business Association, Dublin",
       "title": "First, I got in the room.",
-      "hook": "The quickest way into a city’s industry is to help run the events where it gathers. So that is where I started.",
+      "hook": "The quickest way into a city's business community is to help run the events where it gathers. Mine began at the Ireland India Business Association's Annual Business Networking event at Trinity College Dublin.",
       "steps": [
         {
-          "label": "Ireland India Business Association (IIBA), June",
-          "text": "Ran registration and check-in for around 30 guests at the Annual Business Networking event at Trinity College Dublin, and welcomed the dignitaries."
+          "label": "What I worked on",
+          "text": "Running registration and check-in, preparing name badges, and welcoming guests and dignitaries as they arrived."
         },
         {
-          "label": "Marketing in Ireland, July",
-          "text": "Photographed the community’s 5th anniversary celebration and supported set-up and logistics on the day."
+          "label": "What it taught me",
+          "text": "The welcome sets the tone. Guests decide how an event feels in the first two minutes, at the door."
         }
       ],
-      "teaser": "Helping to run a room is one thing. Next, I was asked to fill one.",
-      "stat": "2",
-      "statLabel": "industry events in two months",
+      "teaser": "A month later, I swapped the registration desk for a camera.",
+      "stat": "30",
+      "statLabel": "guests registered and welcomed, approximately",
       "img": "images/iiba-02-group.jpg",
       "more": [
         {
@@ -388,16 +388,47 @@ window.SITE = {
           "alt": "The welcome address at the IIBA event"
         },
         {
-          "img": "images/marketing-in-ireland-02-panel.jpg",
-          "alt": "A panel at the Marketing in Ireland 5th anniversary"
+          "img": "images/iiba-01-welcome-banner.jpg",
+          "alt": "At the IIBA Annual Business Networking event"
+        }
+      ]
+    },
+    {
+      "year": "July 2026",
+      "name": "The anniversary",
+      "meta": "Marketing in Ireland, Dublin",
+      "title": "Behind the camera at a community's fifth birthday.",
+      "hook": "Marketing in Ireland marked its 5th anniversary with an outdoor celebration in Dublin. I joined the event team and spent the day documenting it.",
+      "steps": [
+        {
+          "label": "What I worked on",
+          "text": "Photographing the celebration, helping to set up the space, and keeping the logistics moving through the day."
+        },
+        {
+          "label": "What it taught me",
+          "text": "A community is a brand's strongest channel. People came for each other, and the event simply gave them the reason."
+        }
+      ],
+      "teaser": "Helping to run a room is one thing. Next, I was asked to fill one.",
+      "stat": "5",
+      "statLabel": "years of the Marketing in Ireland community, celebrated in July 2026",
+      "img": "images/marketing-in-ireland-02-panel.jpg",
+      "more": [
+        {
+          "img": "images/marketing-in-ireland-03-cake.jpg",
+          "alt": "The anniversary cake at the Marketing in Ireland celebration"
+        },
+        {
+          "img": "images/marketing-in-ireland-04-with-friends.jpg",
+          "alt": "At the Marketing in Ireland 5th anniversary"
         },
         {
           "img": "images/marketing-in-ireland-01-meditation.jpg",
           "alt": "Guests at the Marketing in Ireland 5th anniversary"
         },
         {
-          "img": "images/marketing-in-ireland-04-with-friends.jpg",
-          "alt": "At the Marketing in Ireland 5th anniversary"
+          "img": "images/marketing-in-ireland-05-cake-table.jpg",
+          "alt": "Details from the Marketing in Ireland 5th anniversary"
         }
       ]
     },
@@ -608,7 +639,7 @@ window.SITE = {
       "proof": [
         "Set up HubSpot and built the contact base at Irish AI Consultancy",
         "Built an AI research workflow for the Launchy List newsletter",
-        "Two years of weekly KPI analysis across 80+ client profiles at KPMG"
+        "Two years at KPMG turning large datasets into reports for senior stakeholders, at 97% accuracy"
       ],
       "tools": "HubSpot · Google Analytics (in progress) · Excel · AI automation"
     }

@@ -109,59 +109,84 @@
     drawFilters(); drawGrid(true); drawPost(false);
   }
 
-  /* ---------- My story: chapters that unfold ---------- */
+  /* ---------- My story: one chapter at a time ---------- */
   function story() {
-    var chapters = D.chapters, n = 1;
-    var railEl = $('#rail'), listEl = $('#chapters'), nextEl = $('#next'), allBtn = $('#toggle-all');
+    var chapters = D.chapters, i = 0;
+    var barEl = $('#sbar'), labelEl = $('#slabel'), cardEl = $('#chapters'), nextEl = $('#next');
+    var prevBtn = $('#sprev'), nextBtn = $('#snext'), topEl = $('#story-top');
 
-    function chapterHtml(c) {
-      var thumbs = (c.more || []).map(function (m) { return imgTag(m.img, m.alt, null, ' data-zoom="' + esc(m.img) + '"'); }).join('');
-      return '<article class="chapter rise">' +
+    function chapterHtml(c, dir) {
+      var photos = [{ img: c.img, alt: c.alt || c.title }].concat(c.more || []);
+      var slides = photos.map(function (m, k) {
+        return '<div class="show__slide' + (k === 0 ? ' on' : '') + '"><img class="show__bg" src="' + esc(m.img) + '" alt="" aria-hidden="true">' +
+          '<img class="show__img" src="' + esc(m.img) + '" alt="' + esc(m.alt || '') + '"></div>';
+      }).join('');
+      var dots = photos.length > 1 ? '<div class="show__dots" aria-hidden="true">' + photos.map(function (m, k) { return '<span class="' + (k === 0 ? 'on' : '') + '"></span>'; }).join('') + '</div>' : '';
+      return '<article class="chapter ' + dir + '">' +
         '<div class="chapter__top"><div class="chapter__text">' +
-        '<span class="pill">' + esc(c.name) + ' · ' + esc(c.meta) + '</span>' +
-        '<h3 class="chapter__title">' + esc(c.title) + '</h3>' +
+        '<span class="pill">' + esc(c.year) + ' · ' + esc(c.meta) + '</span>' +
+        '<h2 class="chapter__title">' + esc(c.title) + '</h2>' +
         '<p class="chapter__hook">' + esc(c.hook) + '</p></div>' +
-        '<div class="chapter__media">' + imgTag(c.img, c.alt || c.title, c.pos, ' data-zoom="' + esc(c.img) + '"') +
-        (thumbs ? '<div class="thumbs">' + thumbs + '</div>' : '') + '</div></div>' +
+        '<div class="chapter__media"><div class="show">' + slides + dots + '</div></div></div>' +
         '<div class="steps">' + c.steps.map(function (s) {
           return '<div class="step"><div class="step__label">' + esc(s.label) + '</div>' + esc(s.text) + '</div>';
         }).join('') +
         '<div class="stat"><div class="stat__num">' + esc(c.stat) + '</div><div class="stat__label">' + esc(c.statLabel) + '</div></div>' +
         '</div></article>';
     }
-    function drawRail() {
-      railEl.innerHTML = chapters.map(function (c, i) {
-        return '<button type="button" class="' + (i < n ? 'on' : '') + '" data-i="' + i + '" aria-pressed="' + (i < n) + '"><small>' + esc(c.year) + '</small><span>' + esc(c.name) + '</span></button>';
+    var showTimer = null;
+    function startShow() {
+      if (showTimer) { clearInterval(showTimer); showTimer = null; }
+      var slides = cardEl.querySelectorAll('.show__slide'), dots = cardEl.querySelectorAll('.show__dots span'), k = 0;
+      if (slides.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }
+      showTimer = setInterval(function () {
+        slides[k].classList.remove('on'); dots[k].classList.remove('on');
+        k = (k + 1) % slides.length;
+        slides[k].classList.add('on'); dots[k].classList.add('on');
+      }, 3200);
+    }
+    function draw(dir, scroll) {
+      var c = chapters[i], last = i === chapters.length - 1;
+      barEl.innerHTML = chapters.map(function (x, k) {
+        return '<button type="button" data-i="' + k + '" class="' + (k <= i ? 'on' : '') + '" aria-label="Chapter ' + (k + 1) + ': ' + esc(x.name) + '"' + (k === i ? ' aria-current="step"' : '') + '></button>';
       }).join('');
+      labelEl.innerHTML = '<strong>Chapter ' + (i + 1) + ' of ' + chapters.length + '</strong> · ' + esc(c.name);
+      cardEl.innerHTML = chapterHtml(c, dir);
+      startShow();
+      prevBtn.disabled = i === 0;
+      nextBtn.disabled = last;
+      nextEl.innerHTML = last
+        ? '<div class="next ' + dir + '"><p class="next__teaser" style="margin:0">Which brings the story to today.</p><button type="button" class="btn btn--ghost" id="restart">Back to chapter one</button></div>'
+        : '<div class="next ' + dir + '"><div style="flex:1 1 480px;min-width:0"><p class="next__teaser">' + esc(c.teaser) + '</p>' +
+          '<div class="next__ahead">Next: ' + esc(chapters[i + 1].name) + '</div></div>' +
+          '<button type="button" class="btn" id="continue">Next chapter →</button></div>';
+      if (scroll && topEl.getBoundingClientRect().top < 0) { topEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     }
-    function drawNext() {
-      var more = n < chapters.length;
-      allBtn.textContent = more ? 'Open every chapter' : 'Back to the beginning';
-      if (!more) { nextEl.innerHTML = '<p class="today rise">Which brings the story to today.</p>'; return; }
-      var ahead = chapters.slice(n + 1).map(function (c) { return c.name; }).join(', ') || 'the present day';
-      nextEl.innerHTML = '<div class="next rise"><div style="flex:1 1 480px;min-width:0">' +
-        '<p class="next__teaser">' + esc(chapters[n - 1].teaser) + '</p>' +
-        '<div class="next__ahead">Still ahead: ' + esc(ahead) + '</div></div>' +
-        '<button type="button" class="btn" id="continue">Continue: ' + esc(chapters[n].name) + ' →</button></div>';
+    function go(k) {
+      if (k < 0 || k >= chapters.length || k === i) { return; }
+      var dir = k > i ? 'slide-next' : 'slide-prev';
+      i = k; draw(dir, true);
     }
-    function drawAll() {
-      listEl.innerHTML = chapters.slice(0, n).map(chapterHtml).join('');
-      drawRail(); drawNext();
-    }
-    function addOne() {
-      n += 1;
-      listEl.insertAdjacentHTML('beforeend', chapterHtml(chapters[n - 1]));
-      drawRail(); drawNext();
-      listEl.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-    nextEl.addEventListener('click', function (e) { if (e.target.closest('#continue')) { addOne(); } });
-    railEl.addEventListener('click', function (e) {
-      var b = e.target.closest('button'); if (!b) { return; }
-      n = Number(b.getAttribute('data-i')) + 1; drawAll();
-      listEl.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    prevBtn.addEventListener('click', function () { go(i - 1); });
+    nextBtn.addEventListener('click', function () { go(i + 1); });
+    barEl.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) { go(Number(b.getAttribute('data-i'))); } });
+    nextEl.addEventListener('click', function (e) {
+      if (e.target.closest('#continue')) { go(i + 1); }
+      if (e.target.closest('#restart')) { go(0); }
     });
-    allBtn.addEventListener('click', function () { n = (n < chapters.length) ? chapters.length : 1; drawAll(); });
-    drawAll();
+    doc.addEventListener('keydown', function (e) {
+      if (lb.classList.contains('open')) { return; }
+      if (e.key === 'ArrowRight') { go(i + 1); }
+      if (e.key === 'ArrowLeft') { go(i - 1); }
+    });
+    var startX = null;
+    cardEl.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    cardEl.addEventListener('touchend', function (e) {
+      if (startX === null) { return; }
+      var dx = e.changedTouches[0].clientX - startX; startX = null;
+      if (dx < -70) { go(i + 1); } else if (dx > 70) { go(i - 1); }
+    }, { passive: true });
+    draw('rise', false);
   }
 
   /* ---------- My work ---------- */

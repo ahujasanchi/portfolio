@@ -107,23 +107,33 @@ h1, h2, h3, p { margin: 0; }
 .tile__cat { display: block; font-size: 14px; color: var(--soft); margin: 0 8px; }
 
 /* Story */
-.storyhead { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; }
-.rail { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-bottom: 40px; }
-.rail button { text-align: left; background: none; border: none; border-top: 5px solid var(--card); padding: 14px 4px 8px; min-height: 76px; color: var(--soft); transition: border-color 0.3s ease, color 0.3s ease; }
-.rail button.on { border-top-color: var(--accent); color: var(--ink); }
-.rail small { display: block; font-size: 13.5px; font-weight: 500; }
-.rail span { display: block; font-size: 17px; font-weight: 600; line-height: 1.25; }
+.sbar { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; margin-bottom: 14px; }
+.sbar button { background: none; border: none; padding: 12px 0; min-height: 30px; }
+.sbar button::before { content: ''; display: block; height: 6px; border-radius: 6px; background: var(--card); transition: background 0.35s ease; }
+.sbar button.on::before { background: var(--accent); }
+.snav { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+.snav__label { font-size: 16px; color: var(--soft); }
+.snav__label strong { color: var(--ink); font-weight: 600; }
+.snav__btns { display: flex; gap: 10px; }
+.snav__btns button { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--ink); background: var(--card); font-size: 20px; transition: opacity 0.2s ease; }
+.snav__btns button:last-child { background: var(--accent); border-color: var(--accent); color: #fff; }
+.snav__btns button:disabled { opacity: 0.3; cursor: default; }
+#story-top { scroll-margin-top: 16px; }
 .chapter { background: var(--card); border-radius: 32px; padding: 52px; margin-bottom: 28px; scroll-margin-top: 24px; }
 .chapter__top { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; margin-bottom: 40px; }
-.chapter:nth-child(even) .chapter__top { flex-direction: row-reverse; }
 .chapter__text { flex: 1.2 1 440px; min-width: 0; }
 .chapter__title { font-weight: 700; font-size: clamp(30px, 4vw, 42px); line-height: 1.1; letter-spacing: -0.025em; margin: 20px 0 18px; }
 .chapter__hook { font-size: 18.5px; line-height: 1.6; color: var(--soft); max-width: 540px; }
 .chapter__media { flex: 1 1 340px; min-width: 0; }
-.chapter__media > img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 24px; cursor: zoom-in; }
-.thumbs { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
-.thumbs img { width: 72px; height: 72px; object-fit: cover; border-radius: 14px; cursor: zoom-in; transition: transform 0.2s ease; }
-.thumbs img:hover { transform: scale(1.06); }
+.show { position: relative; width: 100%; aspect-ratio: 4 / 3; border-radius: 24px; overflow: hidden; background: var(--ground); }
+.show__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.9s ease; }
+.show__slide.on { opacity: 1; }
+.show__bg { position: absolute; inset: -24px; width: calc(100% + 48px); height: calc(100% + 48px); max-width: none; object-fit: cover; filter: blur(22px) brightness(0.9); }
+.show__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transform: scale(1); transition: transform 3.6s ease-out; }
+.show__slide.on .show__img { transform: scale(1.04); }
+.show__dots { position: absolute; left: 0; right: 0; bottom: 12px; display: flex; gap: 6px; justify-content: center; }
+.show__dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.55); transition: background 0.3s ease, width 0.3s ease; }
+.show__dots span.on { background: #fff; width: 22px; border-radius: 8px; }
 .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 36px; }
 .step { border-top: 2px solid var(--ground); padding-top: 18px; font-size: 16.5px; }
 .step__label { font-size: 13.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 8px; }
@@ -133,7 +143,6 @@ h1, h2, h3, p { margin: 0; }
 .next { border: 2px dashed var(--accent); border-radius: 32px; padding: 44px 52px; display: flex; flex-wrap: wrap; gap: 28px; justify-content: space-between; align-items: center; }
 .next__teaser { font-size: clamp(20px, 2.6vw, 25px); font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 10px; }
 .next__ahead { font-size: 15px; color: var(--soft); }
-.today { font-size: 25px; font-weight: 600; text-align: center; margin: 48px 0 0; }
 
 /* Work */
 .work { display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start; margin-top: 44px; }
@@ -214,6 +223,10 @@ h1, h2, h3, p { margin: 0; }
 /* Motion */
 @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
 @keyframes popIn { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
+@keyframes slideNext { from { opacity: 0; transform: translateX(48px); } to { opacity: 1; transform: none; } }
+@keyframes slidePrev { from { opacity: 0; transform: translateX(-48px); } to { opacity: 1; transform: none; } }
+.slide-next { animation: slideNext 0.5s ease both; }
+.slide-prev { animation: slidePrev 0.5s ease both; }
 @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 .rise { animation: rise 0.7s ease both; animation-delay: var(--d, 0s); }
 .pop { animation: popIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; animation-delay: var(--d, 0s); }
@@ -249,8 +262,6 @@ h1, h2, h3, p { margin: 0; }
   .chapter { padding: 26px 22px; border-radius: 26px; }
   .chapter__top { gap: 26px; margin-bottom: 28px; }
   .next { padding: 28px 24px; border-radius: 26px; }
-  .rail { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .rail span { font-size: 14.5px; }
   .work { gap: 32px; }
   .pview { position: static; order: -1; }
   .plist button { grid-template-columns: 34px minmax(0, 1fr); }
