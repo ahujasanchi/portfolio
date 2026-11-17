@@ -109,7 +109,7 @@
     drawFilters(); drawGrid(true); drawPost(false);
   }
 
-  /* ---------- My story: one chapter at a time ---------- */
+  /* ---------- My story: one milestone at a time ---------- */
   function story() {
     var chapters = D.chapters, i = 0;
     var barEl = $('#sbar'), labelEl = $('#slabel'), cardEl = $('#chapters'), nextEl = $('#next');
@@ -148,18 +148,18 @@
     function draw(dir, scroll) {
       var c = chapters[i], last = i === chapters.length - 1;
       barEl.innerHTML = chapters.map(function (x, k) {
-        return '<button type="button" data-i="' + k + '" class="' + (k <= i ? 'on' : '') + '" aria-label="Chapter ' + (k + 1) + ': ' + esc(x.name) + '"' + (k === i ? ' aria-current="step"' : '') + '></button>';
+        return '<button type="button" data-i="' + k + '" class="' + (k <= i ? 'on' : '') + '" aria-label="Milestone ' + (k + 1) + ': ' + esc(x.name) + '"' + (k === i ? ' aria-current="step"' : '') + '></button>';
       }).join('');
-      labelEl.innerHTML = '<strong>Chapter ' + (i + 1) + ' of ' + chapters.length + '</strong> · ' + esc(c.name);
+      labelEl.innerHTML = '<strong>' + (i + 1) + ' of ' + chapters.length + '</strong> · ' + esc(c.name);
       cardEl.innerHTML = chapterHtml(c, dir);
       startShow();
       prevBtn.disabled = i === 0;
       nextBtn.disabled = last;
       nextEl.innerHTML = last
-        ? '<div class="next ' + dir + '"><p class="next__teaser" style="margin:0">Which brings the story to today.</p><button type="button" class="btn btn--ghost" id="restart">Back to chapter one</button></div>'
+        ? '<div class="next ' + dir + '"><p class="next__teaser" style="margin:0">Which brings the story to today.</p><button type="button" class="btn btn--ghost" id="restart">Back to the start</button></div>'
         : '<div class="next ' + dir + '"><div style="flex:1 1 480px;min-width:0"><p class="next__teaser">' + esc(c.teaser) + '</p>' +
-          '<div class="next__ahead">Next: ' + esc(chapters[i + 1].name) + '</div></div>' +
-          '<button type="button" class="btn" id="continue">Next chapter →</button></div>';
+          '<div class="next__ahead">Up next: ' + esc(chapters[i + 1].name) + '</div></div>' +
+          '<button type="button" class="btn" id="continue">Keep going →</button></div>';
       if (scroll && topEl.getBoundingClientRect().top < 0) { topEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     }
     function go(k) {

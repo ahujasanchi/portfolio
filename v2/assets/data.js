@@ -49,14 +49,19 @@ window.SITE = {
       "cat": "client",
       "title": "A B2B brand from a blank page",
       "kicker": "Irish AI Consultancy · October 2026 to present",
-      "caption": "I launched the company LinkedIn page, planned and scheduled its content, and set up HubSpot with around 900 contacts for outreach.",
+      "caption": "Irish AI Consultancy had no marketing foundations when I joined. Four weeks later it had a LinkedIn page, a CRM with around 900 contacts, brand guidelines and a 90-day marketing plan.",
       "tags": [
-        "B2B social",
-        "Content planning",
-        "HubSpot"
+        "B2B marketing",
+        "HubSpot",
+        "Brand guidelines",
+        "Marketing plan"
       ],
       "img": "images/iac-linkedin-page.jpg",
       "links": [
+        {
+          "label": "Read the case study",
+          "url": "case-iac.html"
+        },
         {
           "label": "See the LinkedIn page",
           "url": "https://www.linkedin.com/company/irish-ai-consultancy/"
@@ -170,7 +175,7 @@ window.SITE = {
       "img": "images/marketing-in-ireland-02-panel.jpg",
       "links": [
         {
-          "label": "Read the chapter",
+          "label": "Read the story",
           "url": "story.html"
         }
       ]
@@ -256,7 +261,7 @@ window.SITE = {
       "cat": "life",
       "title": "Graduation day",
       "kicker": "Trinity College Dublin · 27 October 2026",
-      "caption": "MSc Marketing, complete. One chapter closed, with the next already under way.",
+      "caption": "MSc Marketing, complete. A proud day, and on to what comes next.",
       "tags": [
         "Milestone"
       ],
@@ -280,7 +285,7 @@ window.SITE = {
       "name": "The spark",
       "meta": "Innovist, India",
       "title": "It began at a pop-up stall.",
-      "hook": "My first role in marketing was with Innovist, the personal care company behind Bare Anatomy, as it prepared for its first pop-up. For two days I watched people decide, in real time, whether to buy. I have been curious about that moment ever since.",
+      "hook": "My first role in marketing was with Innovist, the personal care company behind Bare Anatomy, SunScoop and Chemist at Play, as it prepared for its first pop-up. For two days I watched people decide, in real time, whether to buy. I have been curious about that moment ever since.",
       "steps": [
         {
           "label": "What I worked on",
@@ -475,12 +480,12 @@ window.SITE = {
       "hook": "Irish AI Consultancy had deep expertise and no marketing foundations yet. I joined in business development, marketing and events to build them, and I am still there.",
       "steps": [
         {
-          "label": "What I worked on",
-          "text": "Launching the company LinkedIn page, planning and scheduling its content, setting up HubSpot from scratch, and shaping the website messaging, copy and branding for WingLift."
+          "label": "What I built",
+          "text": "The company LinkedIn page and its content schedule, a HubSpot CRM with around 900 contacts, brand guidelines, and a 90-day marketing plan with a weekly scorecard."
         },
         {
-          "label": "What is next",
-          "text": "The company’s upcoming event, where I am coordinating venues."
+          "label": "And alongside it",
+          "text": "Website messaging and branding for WingLift, SEO and AI search audits of six business websites, and the business case for an upcoming event series."
         }
       ],
       "teaser": "",
@@ -505,11 +510,11 @@ window.SITE = {
       "client": "Irish AI Consultancy",
       "type": "Social and CRM",
       "insight": "B2B buyers research quietly. A company with no presence looks like a company with nothing to say.",
-      "outcome": "Company LinkedIn page launched with a planned content calendar, HubSpot set up with around 900 contacts for outreach, and website messaging, copy and branding shaped for WingLift.",
+      "outcome": "In four weeks: a LinkedIn page and content schedule, HubSpot with around 900 contacts, brand guidelines, a 90-day marketing plan, six website audits and the business case for an event series.",
       "img": "images/iac-linkedin-page.jpg",
       "link": {
-        "label": "See the LinkedIn page",
-        "url": "https://www.linkedin.com/company/irish-ai-consultancy/"
+        "label": "Read the case study",
+        "url": "case-iac.html"
       }
     },
     {
@@ -617,6 +622,7 @@ window.SITE = {
       "lead": "Content strategy and day-to-day publishing for B2B and consumer brands.",
       "proof": [
         "Launched and managed a company LinkedIn page for Irish AI Consultancy",
+        "Wrote brand guidelines and a 90-day marketing plan for Irish AI Consultancy",
         "Built a LinkedIn toolkit and content pillars for Staq AI",
         "Designed the content ecosystem for the SME Business Show",
         "Planned a four-pillar content calendar for BAH33°"
