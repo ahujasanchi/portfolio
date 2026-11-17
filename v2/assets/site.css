@@ -186,6 +186,30 @@ h1, h2, h3, p { margin: 0; }
 .quotes__nav button { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--ink); background: var(--card); font-size: 20px; }
 .quotes__nav button:last-child { background: var(--accent); border-color: var(--accent); color: #fff; }
 
+.homecols { display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 32px; align-items: start; }
+.homecols__main { min-width: 0; }
+.side { background: var(--card); border-radius: 28px; padding: 28px; position: sticky; top: 24px; scroll-margin-top: 24px; }
+.side__title { font-weight: 700; font-size: 24px; line-height: 1.15; letter-spacing: -0.02em; }
+.side .tabs { display: flex; flex-direction: column; gap: 6px; border-bottom: none; margin: 20px 0; }
+.side .tabs button { text-align: left; font-size: 15px; padding: 11px 16px; min-height: 44px; border: none; border-radius: 14px; background: var(--ground); color: var(--ink); }
+.side .tabs button[aria-selected="true"] { background: var(--accent); color: #fff; }
+.side .skill { display: block; }
+.side .skill__lead { font-size: 17px; line-height: 1.35; margin-bottom: 10px; }
+.side .skill__body li { font-size: 14.5px; padding: 10px 0; }
+.side .skill__body ul { margin-bottom: 18px; }
+.side .skill__tools { margin-bottom: 6px; }
+.side .skill__body > div:last-child { font-size: 14.5px; }
+.homecols .post { gap: 28px; padding: 20px; margin-bottom: 32px; }
+.homecols .post__media { flex: 1 1 250px; }
+.homecols .post__body { flex: 1.25 1 300px; padding: 6px 8px 6px 0; }
+.homecols .post__title { font-size: clamp(24px, 2.6vw, 30px); margin-bottom: 12px; }
+.homecols .post__caption { font-size: 16px; margin-bottom: 16px; }
+.homecols .post__tags { margin-bottom: 20px; }
+.homecols .grid { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px; }
+@media (max-width: 1000px) {
+  .homecols { grid-template-columns: 1fr; }
+  .side { position: static; }
+}
 .jump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 a.chip { display: inline-flex; align-items: center; text-decoration: none; }
 a.chip:hover { background: var(--accent); color: #fff; }
