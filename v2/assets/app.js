@@ -107,6 +107,18 @@
       selected = b.getAttribute('data-id'); drawGrid(false); drawPost(true);
     });
     drawFilters(); drawGrid(true); drawPost(false);
+
+    var hq = $('#home-quote'), quotes = D.quotes || [], qi = 0;
+    function drawHomeQuote() {
+      var q = quotes[qi];
+      hq.innerHTML = '<div class="swap"><p class="quote__text">“' + esc(q.text) + '”</p><div class="quote__name">' + esc(q.name) + '</div><div class="quote__role">' + esc(q.role) + '</div></div>';
+    }
+    if (hq && quotes.length) {
+      drawHomeQuote();
+      if (quotes.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        setInterval(function () { qi = (qi + 1) % quotes.length; drawHomeQuote(); }, 6500);
+      }
+    }
   }
 
   /* ---------- My story: one stop at a time ---------- */
