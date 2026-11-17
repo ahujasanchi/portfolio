@@ -82,35 +82,91 @@
     drawSkills();
   }
 
-  /* ---------- Home: the feed ---------- */
-  function home() {
-    var posts = D.posts, cats = D.categories;
-    var filter = 'all', selected = posts[0].id;
-    var postEl = $('#post'), gridEl = $('#grid'), filterEl = $('#filters');
+  /* ---------- Testimonials slider ---------- */
+  function quotesSection() {
+    if (!$('#quote')) { return; }
+    var quotes = D.quotes, qi = 0, quoteEl = $('#quote'), countEl = $('#quote-count');
+    function drawQuote() {
+      var q = quotes[qi];
+      quoteEl.innerHTML = '<p class="quote__text">“' + esc(q.text) + '”</p><div class="quote__name">' + esc(q.name) + '</div><div class="quote__role">' + esc(q.role) + '</div>';
+      countEl.textContent = (qi + 1) + ' / ' + quotes.length;
+    }
+    $('#quote-prev').addEventListener('click', function () { qi = (qi + quotes.length - 1) % quotes.length; drawQuote(); });
+    $('#quote-next').addEventListener('click', function () { qi = (qi + 1) % quotes.length; drawQuote(); });
+    drawQuote();
+  }
 
-    function drawPost(scroll) {
-      var p = posts.filter(function (x) { return x.id === selected; })[0] || posts[0];
+  /* ---------- Home: profile and a grid of posts. A post opens in an overlay. ---------- */
+  function home() {
+    var posts = D.posts, cats = D.categories, filter = 'all', current = null, lastFocus = null;
+    var gridEl = $('#grid'), filterEl = $('#filters');
+    var modal = doc.createElement('div');
+    modal.className = 'pm';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Post');
+    modal.innerHTML = '<div class="pm__card"><button type="button" class="pm__close" aria-label="Close">✕</button>' +
+      '<div class="pm__inner"></div>' +
+      '<div class="pm__nav"><button type="button" data-step="-1" aria-label="Previous post">←</button><span></span><button type="button" data-step="1" aria-label="Next post">→</button></div></div>';
+    doc.body.appendChild(modal);
+    var inner = $('.pm__inner', modal), countEl = $('.pm__nav span', modal);
+
+    function visible() { return posts.filter(function (p) { return filter === 'all' || p.cat === filter; }); }
+    function show(id) {
+      var list = visible(), idx = 0;
+      list.forEach(function (p, i) { if (p.id === id) { idx = i; } });
+      var p = list[idx]; current = p.id;
       var links = (p.links || []).map(function (l, i) {
         return '<a class="' + (i === 0 ? 'btn' : 'textlink') + '" ' + linkAttrs(l.url) + '>' + esc(l.label) + (i === 0 ? ' →' : '') + '</a>';
       }).join('');
-      postEl.innerHTML =
+      inner.innerHTML =
         '<div class="post__media">' + mediaTag(p) + '</div>' +
         '<div class="post__body">' +
         '<div class="eyebrow">' + esc(p.kicker) + '</div>' +
-        '<h3 class="post__title">' + esc(p.title) + '</h3>' +
+        '<h2 class="post__title">' + esc(p.title) + '</h2>' +
         '<p class="post__caption">' + esc(p.caption) + '</p>' +
         '<div class="post__tags">' + (p.tags || []).map(function (t) { return '<span class="pill">' + esc(t) + '</span>'; }).join('') + '</div>' +
         '<div class="post__links">' + links + '</div></div>';
-      replay(postEl);
-      if (scroll && !window.matchMedia('(min-width: 1100px)').matches) { postEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      countEl.textContent = (idx + 1) + ' / ' + list.length;
+      replay(inner);
     }
-    function drawGrid(animate) {
-      var list = posts.filter(function (p) { return filter === 'all' || p.cat === filter; });
-      gridEl.innerHTML = list.map(function (p, i) {
-        return '<button type="button" class="tile' + (animate ? ' rise' : '') + '" data-id="' + esc(p.id) + '" aria-pressed="' + (p.id === selected) + '">' +
+    function open(id) {
+      lastFocus = doc.activeElement;
+      show(id);
+      modal.classList.add('open');
+      doc.body.style.overflow = 'hidden';
+      $('.pm__close', modal).focus();
+    }
+    function close() {
+      modal.classList.remove('open');
+      inner.innerHTML = '';
+      doc.body.style.overflow = '';
+      if (lastFocus && lastFocus.focus) { lastFocus.focus(); }
+    }
+    function step(n) {
+      var list = visible(), idx = 0;
+      list.forEach(function (p, i) { if (p.id === current) { idx = i; } });
+      show(list[(idx + n + list.length) % list.length].id);
+    }
+    modal.addEventListener('click', function (e) {
+      var nav = e.target.closest('.pm__nav button');
+      if (nav) { step(Number(nav.getAttribute('data-step'))); return; }
+      if (e.target === modal || e.target.closest('.pm__close')) { close(); }
+    });
+    doc.addEventListener('keydown', function (e) {
+      if (!modal.classList.contains('open')) { return; }
+      if (e.key === 'Escape') { close(); }
+      if (e.key === 'ArrowRight') { step(1); }
+      if (e.key === 'ArrowLeft') { step(-1); }
+    });
+
+    function drawGrid() {
+      gridEl.innerHTML = visible().map(function (p) {
+        return '<button type="button" class="tile" data-id="' + esc(p.id) + '" aria-label="Open post: ' + esc(p.title) + '">' +
           '<span class="tile__img">' + imgTag(p.thumb || p.img, '') + (p.video ? '<span class="tile__play">▶ Film</span>' : '') + '</span>' +
           '<span class="tile__title">' + esc(p.title) + '</span><span class="tile__cat">' + esc(cats[p.cat]) + '</span></button>';
       }).join('');
+      replay(gridEl);
     }
     function drawFilters() {
       var keys = ['all'].concat(Object.keys(cats));
@@ -120,25 +176,13 @@
     }
     filterEl.addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b) { return; }
-      filter = b.getAttribute('data-f'); drawFilters(); drawGrid(true);
+      filter = b.getAttribute('data-f'); drawFilters(); drawGrid();
     });
     gridEl.addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b) { return; }
-      selected = b.getAttribute('data-id'); drawGrid(false); drawPost(true);
+      open(b.getAttribute('data-id'));
     });
-    drawFilters(); drawGrid(false); drawPost(false);
-
-    var hq = $('#home-quote'), quotes = D.quotes || [], qi = 0;
-    function drawHomeQuote() {
-      var q = quotes[qi];
-      hq.innerHTML = '<div class="swap"><p class="quote__text">“' + esc(q.text) + '”</p><div class="quote__name">' + esc(q.name) + '</div><div class="quote__role">' + esc(q.role) + '</div></div>';
-    }
-    if (hq && quotes.length) {
-      drawHomeQuote();
-      if (quotes.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        setInterval(function () { qi = (qi + 1) % quotes.length; drawHomeQuote(); }, 6500);
-      }
-    }
+    drawFilters(); drawGrid();
   }
 
   /* ---------- My story: one stop at a time ---------- */
@@ -264,15 +308,6 @@
     drawList(); drawView(false);
 
 
-    var quotes = D.quotes, qi = 0, quoteEl = $('#quote'), countEl = $('#quote-count');
-    function drawQuote() {
-      var q = quotes[qi];
-      quoteEl.innerHTML = '<p class="quote__text">“' + esc(q.text) + '”</p><div class="quote__name">' + esc(q.name) + '</div><div class="quote__role">' + esc(q.role) + '</div>';
-      countEl.textContent = (qi + 1) + ' / ' + quotes.length;
-    }
-    $('#quote-prev').addEventListener('click', function () { qi = (qi + quotes.length - 1) % quotes.length; drawQuote(); });
-    $('#quote-next').addEventListener('click', function () { qi = (qi + 1) % quotes.length; drawQuote(); });
-    drawQuote();
   }
 
   /* ---------- Certifications ---------- */
@@ -315,6 +350,7 @@
   var pages = { home: home, story: story, work: work, certs: certs, off: off };
   if (pages[page]) { pages[page](); }
   skillsSection();
+  quotesSection();
   /* Jump links such as work.html#testimonials: the target is drawn by this script, so scroll once it exists. */
   if (window.location.hash) {
     var target = doc.getElementById(window.location.hash.slice(1));

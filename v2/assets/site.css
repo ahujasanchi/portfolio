@@ -191,64 +191,23 @@ h1, h2, h3, p { margin: 0; }
 .quotes__nav button { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--ink); background: var(--card); font-size: 20px; }
 .quotes__nav button:last-child { background: var(--accent); border-color: var(--accent); color: #fff; }
 
-/* Home layout. Phone and small laptop: one column. Laptop: feed with the featured post on the right.
-   Wide: What I bring on the left, feed in the centre, featured post on the right. */
-.homegrid { display: flex; flex-direction: column; }
-.homegrid > .profile, .homegrid > .highlights { order: 1; }
-.feature { order: 2; min-width: 0; }
-.homecols__main { order: 3; min-width: 0; }
-.side { order: 4; background: var(--card); border-radius: 32px; padding: 52px; margin-top: 56px; scroll-margin-top: 24px; }
-.homegrid > .homequote { order: 5; }
-.side__title { font-weight: 700; font-size: clamp(30px, 4vw, 44px); line-height: 1.08; letter-spacing: -0.025em; }
-.side .tabs { margin: 28px 0 32px; }
-@media (min-width: 1100px) {
-  .homegrid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; column-gap: 32px; align-items: start; }
-  .homegrid > * { grid-column: 1; }
-  .homegrid > .profile { grid-row: 1; }
-  .homegrid > .highlights { grid-row: 2; }
-  .homegrid > .homecols__main { grid-row: 3; }
-  .homegrid > .side { grid-row: 4; }
-  .homegrid > .homequote { grid-row: 5; }
-  .homegrid > .feature { grid-column: 2; grid-row: 1 / span 5; position: sticky; top: 24px; margin-top: 48px; max-height: calc(100vh - 48px); overflow-y: auto; border-radius: 28px; }
-  .homegrid > .profile { flex-wrap: nowrap; gap: 32px; }
-  .homegrid .profile__photo { width: 156px; height: 156px; }
-  .homegrid .profile__body { flex: 1 1 0; }
-  .feature .feedhead { display: block; margin-bottom: 14px; padding-left: 4px; }
-  .feature .feedhead h2 { font-size: 20px; }
-  .feature .feedhead span { display: block; font-size: 14px; }
-  .feature .post { display: block; padding: 14px; margin: 0; border-radius: 28px; }
-  .feature .post__media img { border-radius: 18px; aspect-ratio: 4 / 3; }
-  .homegrid > .highlights { gap: 16px 14px; padding-bottom: 40px; }
-  .homegrid .hl { width: 98px; font-size: 14px; }
-  .homegrid .hl__ring { width: 90px; height: 90px; }
-  .feature .post__media video { border-radius: 18px; }
-  .feature .post__body { padding: 20px 10px 12px; }
-  .feature .post__title { font-size: 25px; margin-bottom: 12px; }
-  .feature .post__caption { font-size: 15.5px; margin-bottom: 16px; }
-  .feature .post__tags { margin-bottom: 20px; }
-  .feature .post__links { flex-direction: column; align-items: flex-start; gap: 6px; }
-  .homegrid .grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
-}
-@media (min-width: 1400px) {
-  body[data-page="home"] .hd { max-width: 1760px; padding-left: 28px; padding-right: 28px; }
-  body[data-page="home"] .contact .wrap { max-width: 1760px; padding: 0 28px; }
-  .homegrid { max-width: 1760px; padding: 0 28px; grid-template-columns: 320px minmax(0, 1fr) 360px; }
-  .homegrid > * { grid-column: 2; }
-  .homegrid > .homequote { grid-row: 4; }
-  .homegrid > .feature { grid-column: 3; }
-  .homegrid > .side { grid-column: 1; grid-row: 1 / span 5; position: sticky; top: 24px; margin-top: 48px; padding: 36px 30px; border-radius: 28px; max-height: calc(100vh - 48px); overflow-y: auto; }
-  .side .eyebrow { margin-bottom: 18px; }
-  .side__title { font-size: 25px; line-height: 1.2; letter-spacing: -0.02em; }
-  .side .tabs { display: flex; flex-direction: column; gap: 10px; border-bottom: none; margin: 28px 0 30px; }
-  .side .tabs button { text-align: left; font-size: 15.5px; padding: 14px 18px; min-height: 50px; border: none; border-radius: 16px; background: var(--ground); color: var(--ink); }
-  .side .tabs button[aria-selected="true"] { background: var(--accent); color: #fff; }
-  .side .skill { display: block; }
-  .side .skill__lead { font-size: 18px; line-height: 1.4; margin-bottom: 18px; }
-  .side .skill__body li { font-size: 15px; line-height: 1.55; padding: 15px 0; }
-  .side .skill__body ul { margin-bottom: 26px; }
-  .side .skill__tools { margin-bottom: 10px; }
-  .side .skill__body > div:last-child { font-size: 15px; line-height: 1.7; }
-}
+.panel { background: var(--card); border-radius: 32px; padding: 48px 52px; margin-top: 36px; }
+.panel .tabs { margin-top: 0; }
+#testimonials { scroll-margin-top: 24px; }
+
+/* Post overlay on Home */
+.pm { position: fixed; inset: 0; background: rgba(26, 31, 43, 0.72); display: none; align-items: center; justify-content: center; padding: 24px; z-index: 40; }
+.pm.open { display: flex; animation: fade 0.25s ease both; }
+.pm__card { position: relative; background: var(--card); border-radius: 32px; width: 100%; max-width: 1020px; max-height: calc(100vh - 48px); overflow-y: auto; padding: 28px 28px 20px; animation: rise 0.35s ease both; }
+.pm__inner { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; }
+.pm__inner.swap { animation: fade 0.35s ease both; }
+.pm__inner .post__media { flex: 1 1 380px; }
+.pm__inner .post__body { flex: 1.1 1 380px; padding: 8px 44px 8px 0; }
+.pm__close { position: absolute; top: 18px; right: 18px; z-index: 2; width: 46px; height: 46px; border-radius: 50%; border: none; background: var(--ground); font-size: 18px; }
+.pm__close:hover { background: var(--accent); color: #fff; }
+.pm__nav { display: flex; gap: 14px; align-items: center; justify-content: center; margin-top: 18px; font-weight: 600; font-size: 14.5px; color: var(--soft); }
+.pm__nav button { width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--ink); background: var(--card); font-size: 18px; }
+.pm__nav button:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
 .jump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 a.chip { display: inline-flex; align-items: center; text-decoration: none; }
 a.chip:hover { background: var(--accent); color: #fff; }
@@ -334,8 +293,12 @@ a.chip:hover { background: var(--accent); color: #fff; }
   .tile__title { font-size: 14.5px; margin: 10px 4px 2px; }
   .tile__cat { font-size: 12.5px; margin: 0 4px; }
   .chapter { padding: 26px 22px; border-radius: 26px; }
+  .panel { padding: 28px 24px; border-radius: 26px; }
+  .pm { padding: 12px; }
+  .pm__card { padding: 14px 14px 14px; border-radius: 26px; max-height: calc(100vh - 24px); }
+  .pm__inner { gap: 18px; }
+  .pm__inner .post__body { padding: 4px 8px 4px; }
   .homequote { padding: 30px 24px; border-radius: 26px; }
-  .side { padding: 30px 24px; border-radius: 26px; }
   .homequote .quote__text { min-height: 260px; }
   .chapter__top { gap: 26px; margin-bottom: 28px; }
   .next { padding: 28px 24px; border-radius: 26px; }
