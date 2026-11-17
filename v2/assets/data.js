@@ -31,6 +31,10 @@ window.SITE = {
       "pos": "center 30%",
       "links": [
         {
+          "label": "Read the case study",
+          "url": "case-launchy.html"
+        },
+        {
           "label": "See the post on LinkedIn",
           "url": "https://www.linkedin.com/posts/sanchiahuja_launchy-irishstartups-marketing-ugcPost-7518124928165097472-ma6w/"
         },
@@ -485,8 +489,8 @@ window.SITE = {
       "outcome": "Around 190 tickets booked and 100 people in the room, followed by a newsletter that reached 1,064 subscribers in two editions.",
       "img": "images/launchy-03-team.jpg",
       "link": {
-        "label": "Read the founder's write-up",
-        "url": "https://www.conorlyn.ch/p/from-concept-to-200-rsvps-in-12-weeks"
+        "label": "Read the case study",
+        "url": "case-launchy.html"
       },
       "pos": "center 30%"
     },

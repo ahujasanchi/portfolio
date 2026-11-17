@@ -4,6 +4,7 @@
 .legacy .display{font-weight:700}
 .legacy .case-back{cursor:pointer}
 .legacy .case-film{margin:3rem 0}
+.legacy .case-film{margin:3rem 0}
 .legacy .case-film video{width:100%;border-radius:20px;background:#000}
 .legacy .display{
     font-family: 'Poppins', sans-serif;
@@ -983,3 +984,4 @@
 .legacy .coaster-grid,.legacy .sign-grid,.legacy .design-system{ grid-template-columns: 1fr; }
 .legacy .type-row{ grid-template-columns: 1fr; gap: 0.5rem; }
 .legacy .palette-block,.legacy .typography-block{ padding: 2rem 1.5rem; }}
+.legacy .pillar-number{color:var(--accent)}
