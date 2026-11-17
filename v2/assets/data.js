@@ -42,7 +42,8 @@ window.SITE = {
           "label": "Read the founder's write-up",
           "url": "https://www.conorlyn.ch/p/from-concept-to-200-rsvps-in-12-weeks"
         }
-      ]
+      ],
+      "thumb": "images/thumbs/launchy-03-team.jpg"
     },
     {
       "id": "iac",
@@ -66,7 +67,8 @@ window.SITE = {
           "label": "See the LinkedIn page",
           "url": "https://www.linkedin.com/company/irish-ai-consultancy/"
         }
-      ]
+      ],
+      "thumb": "images/thumbs/iac-linkedin-page.jpg"
     },
     {
       "id": "winglift",
@@ -85,7 +87,8 @@ window.SITE = {
           "label": "Visit winglift.io",
           "url": "https://winglift.io"
         }
-      ]
+      ],
+      "thumb": "images/thumbs/winglift-homepage.jpg"
     },
     {
       "id": "guinness",
@@ -104,7 +107,8 @@ window.SITE = {
           "label": "Read the case study",
           "url": "case-guinness.html"
         }
-      ]
+      ],
+      "thumb": "images/thumbs/guinness-hero-pint.jpg"
     },
     {
       "id": "list",
@@ -122,7 +126,8 @@ window.SITE = {
           "label": "Read edition 2",
           "url": "https://www.linkedin.com/pulse/launchy-list-edition-2-conor-lynch-6khnf/"
         }
-      ]
+      ],
+      "thumb": "images/thumbs/launchy-list-edition-2.jpg"
     },
     {
       "id": "staq",
@@ -141,7 +146,8 @@ window.SITE = {
           "label": "Read the case study",
           "url": "case-staq.html"
         }
-      ]
+      ],
+      "thumb": "images/thumbs/staq-pillars.jpg"
     },
     {
       "id": "sme",
@@ -160,7 +166,8 @@ window.SITE = {
           "label": "See the post on LinkedIn",
           "url": "https://lnkd.in/p/eS8UaGPv"
         }
-      ]
+      ],
+      "thumb": "images/thumbs/trinity-sme-business-show-team.jpg"
     },
     {
       "id": "mii",
@@ -178,7 +185,8 @@ window.SITE = {
           "label": "Read the story",
           "url": "story.html"
         }
-      ]
+      ],
+      "thumb": "images/thumbs/marketing-in-ireland-02-panel.jpg"
     },
     {
       "id": "tuborg",
@@ -198,7 +206,8 @@ window.SITE = {
           "url": "case-tuborg.html"
         }
       ],
-      "video": "media/tuborg-off-the-record-nights.mp4"
+      "video": "media/tuborg-off-the-record-nights.mp4",
+      "thumb": "images/thumbs/tuborg-hero.jpg"
     },
     {
       "id": "smoking",
@@ -217,7 +226,8 @@ window.SITE = {
           "label": "Read the case study",
           "url": "case-smoking.html"
         }
-      ]
+      ],
+      "thumb": "images/thumbs/smoking-protest.jpg"
     },
     {
       "id": "iiba",
@@ -235,7 +245,8 @@ window.SITE = {
           "label": "See the post on LinkedIn",
           "url": "https://lnkd.in/p/eFhtCiQ2"
         }
-      ]
+      ],
+      "thumb": "images/thumbs/iiba-03-dignitaries.jpg"
     },
     {
       "id": "bah",
@@ -254,7 +265,8 @@ window.SITE = {
           "label": "Read the case study",
           "url": "case-bah33.html"
         }
-      ]
+      ],
+      "thumb": "images/thumbs/bah33.jpg"
     },
     {
       "id": "grad",
@@ -276,7 +288,8 @@ window.SITE = {
           "label": "Read my story",
           "url": "story.html"
         }
-      ]
+      ],
+      "thumb": "images/thumbs/graduation-01.jpg"
     }
   ],
   "chapters": [
@@ -424,8 +437,8 @@ window.SITE = {
           "alt": "The anniversary cake at the Marketing in Ireland celebration"
         },
         {
-          "img": "images/marketing-in-ireland-04-with-friends.jpg",
-          "alt": "At the Marketing in Ireland 5th anniversary"
+          "img": "images/marketing-in-ireland-06-workshop.jpg",
+          "alt": "A workshop on the grass at the Marketing in Ireland 5th anniversary"
         },
         {
           "img": "images/marketing-in-ireland-01-meditation.jpg",
