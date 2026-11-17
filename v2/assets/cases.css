@@ -986,9 +986,9 @@
 .legacy .palette-block,.legacy .typography-block{ padding: 2rem 1.5rem; }}
 .legacy .pillar-number{color:var(--accent)}
 .legacy .ba{display:grid;gap:10px;margin:1.5rem 0}
-.legacy .ba__row{display:grid;grid-template-columns:1fr 1.4fr;gap:10px}
+.legacy .ba__row{display:grid;grid-template-columns:minmax(120px,.5fr) 1.6fr;gap:10px}
 .legacy .ba__row>div{padding:16px 20px;border-radius:16px}
 .legacy .ba__head>div{padding:0 20px;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}
-.legacy .ba__before{border:1.5px dashed rgba(26,31,43,.3);color:var(--text-soft)}
+.legacy .ba__before{background:var(--accent);color:#fff;font-weight:600}
 .legacy .ba__after{background:#fff;border:1.5px solid #fff;font-weight:500}
 @media (max-width:640px){.legacy .ba__row{grid-template-columns:1fr}.legacy .ba__head{display:none}}

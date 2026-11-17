@@ -109,7 +109,7 @@
     drawFilters(); drawGrid(true); drawPost(false);
   }
 
-  /* ---------- My story: one milestone at a time ---------- */
+  /* ---------- My story: one stop at a time ---------- */
   function story() {
     var chapters = D.chapters, i = 0;
     var barEl = $('#sbar'), labelEl = $('#slabel'), cardEl = $('#chapters'), nextEl = $('#next');
@@ -148,7 +148,7 @@
     function draw(dir, scroll) {
       var c = chapters[i], last = i === chapters.length - 1;
       barEl.innerHTML = chapters.map(function (x, k) {
-        return '<button type="button" data-i="' + k + '" class="' + (k <= i ? 'on' : '') + '" aria-label="Milestone ' + (k + 1) + ': ' + esc(x.name) + '"' + (k === i ? ' aria-current="step"' : '') + '></button>';
+        return '<button type="button" data-i="' + k + '" class="' + (k <= i ? 'on' : '') + '" aria-label="Stop ' + (k + 1) + ': ' + esc(x.name) + '"' + (k === i ? ' aria-current="step"' : '') + '></button>';
       }).join('');
       labelEl.innerHTML = '<strong>' + (i + 1) + ' of ' + chapters.length + '</strong> · ' + esc(c.name);
       cardEl.innerHTML = chapterHtml(c, dir);

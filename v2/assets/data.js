@@ -47,9 +47,9 @@ window.SITE = {
     {
       "id": "iac",
       "cat": "client",
-      "title": "A B2B brand from a blank page",
+      "title": "Marketing foundations for a B2B consultancy",
       "kicker": "Irish AI Consultancy · October 2026 to present",
-      "caption": "Irish AI Consultancy had no marketing foundations when I joined. Four weeks later it had a LinkedIn page, a CRM with around 900 contacts, brand guidelines and a 90-day marketing plan.",
+      "caption": "Four weeks of building the marketing behind a growing AI consultancy: a LinkedIn page, a CRM with around 900 contacts, brand guidelines and a 90-day marketing plan.",
       "tags": [
         "B2B marketing",
         "HubSpot",
@@ -263,7 +263,7 @@ window.SITE = {
       "kicker": "Trinity College Dublin · 27 October 2026",
       "caption": "MSc Marketing, complete. A proud day, and on to what comes next.",
       "tags": [
-        "Milestone"
+        "Graduation"
       ],
       "img": "images/graduation-01.jpg",
       "pos": "center 30%",
@@ -453,7 +453,7 @@ window.SITE = {
           "text": "The Launchy List, a newsletter that has reached 1,064 subscribers in two editions, supported by an AI research workflow I built."
         }
       ],
-      "teaser": "A full room is a good problem to have. The next brief started with a blank page.",
+      "teaser": "A full room is a good problem to have. The next brief was about building for the long term.",
       "stat": "190",
       "statLabel": "tickets booked, with around 100 people in the room",
       "img": "images/launchy-02-001-stage.jpg",
@@ -474,10 +474,10 @@ window.SITE = {
     },
     {
       "year": "October 2026",
-      "name": "The blank page",
+      "name": "The foundations",
       "meta": "Irish AI Consultancy, Dublin",
-      "title": "Building a B2B brand from a blank page.",
-      "hook": "Irish AI Consultancy had deep expertise and no marketing foundations yet. I joined in business development, marketing and events to build them, and I am still there.",
+      "title": "Building the marketing behind a growing consultancy.",
+      "hook": "Irish AI Consultancy is a young company with deep expertise and ambitious plans. I joined in business development, marketing and events to help build the marketing behind them, and I am still there.",
       "steps": [
         {
           "label": "What I built",
@@ -506,10 +506,10 @@ window.SITE = {
   ],
   "projects": [
     {
-      "title": "Building a B2B brand from a blank page",
+      "title": "Marketing foundations for a growing B2B consultancy",
       "client": "Irish AI Consultancy",
       "type": "Social and CRM",
-      "insight": "B2B buyers research quietly. A company with no presence looks like a company with nothing to say.",
+      "insight": "B2B buyers research quietly. Before they return a call, they look you up, and what they find has to earn the conversation.",
       "outcome": "In four weeks: a LinkedIn page and content schedule, HubSpot with around 900 contacts, brand guidelines, a 90-day marketing plan, six website audits and the business case for an event series.",
       "img": "images/iac-linkedin-page.jpg",
       "link": {
