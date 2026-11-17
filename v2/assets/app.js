@@ -62,6 +62,26 @@
     }
   });
 
+  /* ---------- What I bring (skills tabs), used on Home ---------- */
+  function skillsSection() {
+    if (!$('#skill-tabs')) { return; }
+    var skills = D.skills, si = 0, tabsEl = $('#skill-tabs'), skillEl = $('#skill');
+    function drawSkills() {
+      tabsEl.innerHTML = skills.map(function (s, i) {
+        return '<button type="button" role="tab" data-i="' + i + '" aria-selected="' + (i === si) + '">' + esc(s.label) + '</button>';
+      }).join('');
+      var s = skills[si];
+      skillEl.innerHTML = '<p class="skill__lead">' + esc(s.lead) + '</p><div class="skill__body"><ul>' +
+        s.proof.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') +
+        '</ul><div class="skill__tools">Tools</div><div>' + esc(s.tools) + '</div></div>';
+    }
+    tabsEl.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) { return; }
+      si = Number(b.getAttribute('data-i')); drawSkills();
+    });
+    drawSkills();
+  }
+
   /* ---------- Home: the feed ---------- */
   function home() {
     var posts = D.posts, cats = D.categories;
@@ -228,21 +248,6 @@
     });
     drawList(); drawView(false);
 
-    var skills = D.skills, si = 0, tabsEl = $('#skill-tabs'), skillEl = $('#skill');
-    function drawSkills() {
-      tabsEl.innerHTML = skills.map(function (s, i) {
-        return '<button type="button" role="tab" data-i="' + i + '" aria-selected="' + (i === si) + '">' + esc(s.label) + '</button>';
-      }).join('');
-      var s = skills[si];
-      skillEl.innerHTML = '<p class="skill__lead">' + esc(s.lead) + '</p><div class="skill__body"><ul>' +
-        s.proof.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') +
-        '</ul><div class="skill__tools">Tools</div><div>' + esc(s.tools) + '</div></div>';
-    }
-    tabsEl.addEventListener('click', function (e) {
-      var b = e.target.closest('button'); if (!b) { return; }
-      si = Number(b.getAttribute('data-i')); drawSkills();
-    });
-    drawSkills();
 
     var quotes = D.quotes, qi = 0, quoteEl = $('#quote'), countEl = $('#quote-count');
     function drawQuote() {
@@ -294,6 +299,12 @@
   var page = doc.body.getAttribute('data-page');
   var pages = { home: home, story: story, work: work, certs: certs, off: off };
   if (pages[page]) { pages[page](); }
+  skillsSection();
+  /* Jump links such as work.html#testimonials: the target is drawn by this script, so scroll once it exists. */
+  if (window.location.hash) {
+    var target = doc.getElementById(window.location.hash.slice(1));
+    if (target) { setTimeout(function () { target.scrollIntoView({ block: 'start' }); }, 80); }
+  }
   watch();
 
   /* Old case study pages call showPage(); send those clicks to the new pages. */
